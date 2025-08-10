@@ -178,6 +178,7 @@
         .category.customer-discovery { background: #f0fdf4; color: #15803d; }
         .category.architecture-quiz { background: #fffbeb; color: #d97706; }
         .category.questions-to-ask { background: #f8fafc; color: #475569; }
+        .category.tam-specific { background: #fef2f2; color: #dc2626; }
         
         .question-text {
             line-height: 1.6;
@@ -267,6 +268,7 @@
                 <button class="filter-btn" data-filter="performance">Performance</button>
                 <button class="filter-btn" data-filter="database">Database</button>
                 <button class="filter-btn" data-filter="customer-discovery">Discovery</button>
+                <button class="filter-btn" data-filter="tam-specific">The Drunk TAM</button>
             </div>
             
             <button class="export-btn" onclick="exportToCSV()">Export CSV</button>
@@ -396,7 +398,156 @@
                 notes: "ADS, MGN, DMS, Migration Hub, etc."
             },
 
-            // Behavioral Questions (STAR Format)
+            // NEW BEHAVIORAL QUESTIONS ADDED FROM PROVIDED LIST
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you tried to simplify a process but failed. What would you have done differently?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Shows learning from failure, process improvement mindset"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you had to work with insufficient information or incomplete data",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Testing ability to work under uncertainty and make decisions with limited data"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a situation or experience you went through that changed your way of thinking",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Growth mindset, adaptability, learning from experience"
+            },
+            {
+                category: "behavioral",
+                question: "Provide an example of when you took a calculated risk",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Risk assessment, decision-making under uncertainty, ownership"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about an unpopular decision of yours",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Have backbone, disagree and commit, leadership courage"
+            },
+            {
+                category: "behavioral",
+                question: "What project are you currently working on?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "Current work relevance, technical depth, business impact"
+            },
+            {
+                category: "behavioral",
+                question: "What is the most challenging aspect of your current project?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Problem-solving approach, current technical challenges"
+            },
+            {
+                category: "behavioral",
+                question: "What was the most difficult bug that you fixed in the past 6 months?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Technical troubleshooting, persistence, learning"
+            },
+            {
+                category: "behavioral",
+                question: "How do you tackle challenges? Name a difficult challenge you faced while working on a project, how you overcame it, and what you learned",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Problem-solving methodology, resilience, continuous learning"
+            },
+            {
+                category: "behavioral",
+                question: "How do you deal with a failed deadline?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Accountability, communication, process improvement"
+            },
+            {
+                category: "behavioral",
+                question: "In your professional experience have you worked on something without getting approval from your manager?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Initiative, bias for action, judgment in decision-making"
+            },
+            {
+                category: "behavioral",
+                question: "What are you excited about?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "Passion, motivation, cultural fit assessment"
+            },
+            {
+                category: "behavioral",
+                question: "What frustrates you?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "Self-awareness, working style, potential red flags"
+            },
+            {
+                category: "behavioral",
+                question: "What does your best day of work look like?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "Work preferences, motivation, cultural alignment"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time you were uncomfortable and how you dealt with it",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Resilience, adaptability, growth mindset"
+            },
+            {
+                category: "behavioral",
+                question: "Give me an example of when you've been a good host",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "Customer obsession, care for others, leadership qualities"
+            },
+            {
+                category: "behavioral",
+                question: "What is something new that you can teach your interviewer in a few minutes?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "Communication skills, passion for learning, expertise demonstration"
+            },
+            {
+                category: "behavioral",
+                question: "What is the best gift you have ever given or received?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "Values, thoughtfulness, personal connections"
+            },
+            {
+                category: "behavioral",
+                question: "Imagine it is your first day here at the company. What do you want to work on? What features would you improve on?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Initiative, research about company, strategic thinking"
+            },
+            {
+                category: "behavioral",
+                question: "What are the most interesting projects you have worked on and how might they be relevant to this company's environment?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Relevance to role, technical depth, business understanding"
+            },
+            {
+                category: "behavioral",
+                question: "What would excite you about working at [Company Name]?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "Company research, cultural fit, genuine interest"
+            },
+
+            // Existing Behavioral Questions (STAR Format)
             {
                 category: "behavioral",
                 question: "Tell me about yourself",
@@ -529,6 +680,134 @@
                 complexity: "basic",
                 round: "Behavioral",
                 notes: "What are you doing to resolve weaknesses?"
+            },
+
+            // Negative Behavioral Questions (Most Important - Question Behind The Question)
+            {
+                category: "behavioral",
+                question: "Tell me a time you had a conflict with your team member",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing EARN TRUST - vocally self-critical, treat others respectfully, don't blame others"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me a time you had a conflict with your manager",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing HAVE BACKBONE DISAGREE & COMMIT - respectful disagreement, data-driven decisions"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me a time when you had to push back (to a customer/manager)",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing CUSTOMER OBSESSION vs HAVE BACKBONE - when to disagree for customer's long-term benefit"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me a time when you failed a project or made a mistake",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing OWNERSHIP - take responsibility, learn from failures, don't sacrifice long-term value"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me a time when it did not work out or did not meet client's expectations",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing CUSTOMER OBSESSION & OWNERSHIP - how you handle customer disappointment and recover"
+            },
+            {
+                category: "behavioral",
+                question: "Give an example when you did not meet client's expectations - what happened and how did you rectify?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing DELIVER RESULTS & CUSTOMER OBSESSION - recovery strategy, learning, prevention"
+            },
+            {
+                category: "behavioral",
+                question: "What is your weakness?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing EARN TRUST - vocally self-critical, body odor doesn't smell like perfume, genuine self-awareness"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me a time when you had to apologize to someone",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing EARN TRUST - vulnerability, accountability, relationship repair, humility"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you had to work with unclear or ambiguous responsibilities",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing BIAS FOR ACTION - decisions are reversible, don't need extensive study, self-starter mentality"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me a time when you were 75% through your project and had to pivot strategy",
+                complexity: "advanced",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing BIAS FOR ACTION & OWNERSHIP - calculated risk-taking, resilience, decision-making under uncertainty"
+            },
+            {
+                category: "behavioral",
+                question: "What did you do when you needed to motivate a group of individuals or promote collaboration?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing EARN TRUST & DIVE DEEP - leadership without authority, team building, influence skills"
+            },
+            {
+                category: "behavioral",
+                question: "How did you get non-performing team member back to contribute?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing EARN TRUST & INSIST ON HIGHEST STANDARDS - difficult conversations, performance management"
+            },
+            {
+                category: "behavioral",
+                question: "Why do you want to join AWS (or this company)?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing cultural fit, research depth, genuine interest. Must tie to Leadership Principles"
+            },
+            {
+                category: "behavioral",
+                question: "Why did you leave your last company?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing OWNERSHIP & EARN TRUST - no bad-mouthing, focus on growth, positive framing"
+            },
+            {
+                category: "behavioral",
+                question: "Why is there a gap in your resume?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing EARN TRUST - honesty, transparency, what did you learn during the gap"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me a time you delivered a big project in a short timeline",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing BIAS FOR ACTION - speed matters, many decisions are reversible, calculated risk-taking"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me a time when you took responsibility outside your job description",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing OWNERSHIP - think long-term, act for entire company, never say 'that's not my job'"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you had to earn someone's trust",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing EARN TRUST - listen attentively, speak candidly, vocally self-critical when awkward"
             },
 
             // Technical Questions
@@ -1357,6 +1636,330 @@
                 complexity: "basic",
                 round: "All Rounds",
                 notes: "Identifies improvement opportunities"
+            },
+
+            // The Drunk TAM - Amazon TAM Specific Questions
+            {
+                category: "tam-specific",
+                question: "You made a bad decision, what did you learn?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "STAR format: How you found it was bad, communicated to stakeholders, documented, delivered training. Focus on 'Learn and be curious' LP"
+            },
+            {
+                category: "tam-specific",
+                question: "How did you find that this was a bad decision?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Follow-up: Specific metrics, feedback, or outcomes that indicated the decision wasn't optimal"
+            },
+            {
+                category: "tam-specific",
+                question: "How did you communicate that to stakeholders and document it?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Focus on transparency, documentation process, and training delivery to prevent future issues"
+            },
+            {
+                category: "tam-specific",
+                question: "How were your documents shared by the teams and what did it include?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Documentation sharing process, content details, team collaboration approach"
+            },
+            {
+                category: "tam-specific",
+                question: "In client documentation - did it contain SOP (Standard Operating Procedures)?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Process documentation, standardization, knowledge transfer to client teams"
+            },
+            {
+                category: "tam-specific",
+                question: "Which Leadership Principle did you discover? Focus on 'Learn and be curious'",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Tie learning experience to specific Amazon Leadership Principle"
+            },
+            {
+                category: "tam-specific",
+                question: "Worked against client timeline - how did you prioritize and identify high-impact items?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Show risk identification skills and data-driven prioritization. Focus on client value delivery"
+            },
+            {
+                category: "tam-specific",
+                question: "How did you identify the risk and what datapoints did you use?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Specific metrics, early warning indicators, and systematic risk assessment approach"
+            },
+            {
+                category: "tam-specific",
+                question: "When you strongly disagreed with your manager - what was it, how did you handle it?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Show data-driven disagreement, professional approach, and focus on company benefits and recognition"
+            },
+            {
+                category: "tam-specific",
+                question: "How did you show data to them and did they approve?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Data presentation skills, convincing with evidence, outcome of disagreement"
+            },
+            {
+                category: "tam-specific",
+                question: "Why did you do this to your manager?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Motivation behind the disagreement, principle-driven decision making"
+            },
+            {
+                category: "tam-specific",
+                question: "What were any company benefits and recognition?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Business impact of your position, organizational recognition or outcomes"
+            },
+            {
+                category: "tam-specific",
+                question: "Describe a time when you had a difficult time with a customer and how you handled it",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "TAM core competency: Customer relationship management, issue resolution, and learning outcomes"
+            },
+            {
+                category: "tam-specific",
+                question: "How did you find the cause of the customer issue?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Root cause analysis methodology, investigation approach"
+            },
+            {
+                category: "tam-specific",
+                question: "How did the customer issue happen?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Understanding of failure modes, contributing factors"
+            },
+            {
+                category: "tam-specific",
+                question: "How did you resolve the customer issue?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Solution implementation, customer communication, follow-up"
+            },
+            {
+                category: "tam-specific",
+                question: "How did you identify the issue initially?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Issue detection methods, monitoring, customer feedback"
+            },
+            {
+                category: "tam-specific",
+                question: "What did you learn from the customer issue?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Learning outcomes, process improvements, prevention strategies"
+            },
+            {
+                category: "tam-specific",
+                question: "What you could have done to meet the deadline?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Retrospective analysis, process improvements, resource planning"
+            },
+            {
+                category: "tam-specific",
+                question: "What was the parameter they were looking for?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Understanding stakeholder expectations, success criteria"
+            },
+            {
+                category: "tam-specific",
+                question: "Tough feedback from anyone - how did you make it positive?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Growth mindset, continuous improvement, turning feedback into actionable improvements"
+            },
+            {
+                category: "tam-specific",
+                question: "When you not only met goal but exceeded expectations",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Must include: deadline, execution approach, communication strategy. Show 'Deliver Results' LP"
+            },
+            {
+                category: "tam-specific",
+                question: "What was the deadline for exceeding expectations?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Timeline management, pressure handling, delivery focus"
+            },
+            {
+                category: "tam-specific",
+                question: "How did you execute to exceed expectations?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Execution strategy, resource management, innovation approach"
+            },
+            {
+                category: "tam-specific",
+                question: "How did you communicate the exceeded results?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Stakeholder communication, impact presentation, value articulation"
+            },
+            {
+                category: "tam-specific",
+                question: "Realized you needed deeper level of expertise - what did you do to learn?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Example: DynamoDB deep dive, exploring alternatives, systematic learning approach"
+            },
+            {
+                category: "tam-specific",
+                question: "Why DynamoDB for deeper expertise?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Technology selection rationale, business justification"
+            },
+            {
+                category: "tam-specific",
+                question: "Did you explore other options before DynamoDB?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Alternative evaluation, decision-making process"
+            },
+            {
+                category: "tam-specific",
+                question: "What steps do you take to learn something new?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Learning methodology, continuous improvement approach"
+            },
+            {
+                category: "tam-specific",
+                question: "How do you balance between HA (High Availability), Cost, and Reliability?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Core TAM skill: Architecture trade-offs, customer advisory on business/technical balance"
+            },
+            {
+                category: "tam-specific",
+                question: "Auth & authorization implementation approach",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Security implementation, access control design, best practices"
+            },
+            {
+                category: "tam-specific",
+                question: "Autonomous contribution to business - develop AWS service",
+                complexity: "advanced",
+                round: "Behavioral",
+                notes: "Show initiative in building internal tools, eliminating repetitive tasks, ROI focus, customer satisfaction increase"
+            },
+            {
+                category: "tam-specific",
+                question: "How do you get rid of repeatable tasks and show ROI?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Automation mindset, efficiency improvements, measurable business impact"
+            },
+            {
+                category: "tam-specific",
+                question: "Return on investment calculation and customer satisfaction increase",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Business metrics, value demonstration, customer impact measurement"
+            },
+            {
+                category: "tam-specific",
+                question: "On-prem to AWS migration approach - educate and implement best practices",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "TAM core: Share AWS services, educate customers, ensure apps run well on cloud, demo and implement"
+            },
+            {
+                category: "tam-specific",
+                question: "Share AWS services to implement for migration",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Service selection, migration planning, implementation strategy"
+            },
+            {
+                category: "tam-specific",
+                question: "Educate about the AWS services during migration",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Knowledge transfer, training approach, customer enablement"
+            },
+            {
+                category: "tam-specific",
+                question: "Help ensure app runs well on cloud",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Performance optimization, monitoring, troubleshooting"
+            },
+            {
+                category: "tam-specific",
+                question: "Demo AWS services to customers",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Presentation skills, technical demonstration, customer engagement"
+            },
+            {
+                category: "tam-specific",
+                question: "Implement following AWS best practices",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Best practice adherence, implementation guidance, quality assurance"
+            },
+            {
+                category: "tam-specific",
+                question: "Balance between utilization 10% vs 90% - resource optimization",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Cost optimization guidance, right-sizing recommendations, performance vs cost trade-offs"
+            },
+            {
+                category: "tam-specific",
+                question: "Which WAR (Well-Architected Review) pillars and how you've applied them?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Must know all 6 pillars and have specific examples of implementing recommendations"
+            },
+            {
+                category: "tam-specific",
+                question: "Always say 'I did' not 'we did' - show individual contribution",
+                complexity: "basic",
+                round: "All Rounds",
+                notes: "Critical for TAM role: Personal accountability, individual impact, ownership of outcomes"
+            },
+            {
+                category: "tam-specific",
+                question: "Focus on DATA - numbers, challenges, how to overcome",
+                complexity: "intermediate",
+                round: "All Rounds",
+                notes: "Quantify everything: performance improvements, cost savings, time reductions, customer satisfaction metrics"
+            },
+            {
+                category: "tam-specific",
+                question: "Ask clarifying questions during technical discussions",
+                complexity: "basic",
+                round: "Technical",
+                notes: "Show curiosity, ensure proper understanding, demonstrate customer advisory approach"
+            },
+            {
+                category: "tam-specific",
+                question: "LP (Leadership Principles) demonstration with breadth of knowledge",
+                complexity: "intermediate",
+                round: "All Rounds",
+                notes: "Connect experiences to Amazon Leadership Principles, show broad technical and business understanding"
             }
         ];
 
@@ -1446,3 +2049,4 @@
     </script>
 </body>
 </html>
+                
