@@ -170,6 +170,14 @@
         .category.well-architected { background: #ede9fe; color: #6b21a8; }
         .category.compliance { background: #fdf2f8; color: #9d174d; }
         .category.kubernetes { background: #cffafe; color: #065f46; }
+        .category.executive-communication { background: #fef7ed; color: #ea580c; }
+        .category.event-driven { background: #e0f2fe; color: #0369a1; }
+        .category.genai { background: #f3e8ff; color: #7c2d12; }
+        .category.performance { background: #ecfdf5; color: #166534; }
+        .category.database { background: #fdf4ff; color: #a21caf; }
+        .category.customer-discovery { background: #f0fdf4; color: #15803d; }
+        .category.architecture-quiz { background: #fffbeb; color: #d97706; }
+        .category.questions-to-ask { background: #f8fafc; color: #475569; }
         
         .question-text {
             line-height: 1.6;
@@ -253,6 +261,12 @@
                 <button class="filter-btn" data-filter="well-architected">Well-Architected</button>
                 <button class="filter-btn" data-filter="compliance">Compliance</button>
                 <button class="filter-btn" data-filter="kubernetes">Kubernetes</button>
+                <button class="filter-btn" data-filter="executive-communication">Executive</button>
+                <button class="filter-btn" data-filter="event-driven">Event-Driven</button>
+                <button class="filter-btn" data-filter="genai">GenAI/RAG</button>
+                <button class="filter-btn" data-filter="performance">Performance</button>
+                <button class="filter-btn" data-filter="database">Database</button>
+                <button class="filter-btn" data-filter="customer-discovery">Discovery</button>
             </div>
             
             <button class="export-btn" onclick="exportToCSV()">Export CSV</button>
@@ -865,6 +879,484 @@
                 complexity: "advanced",
                 round: "Technical",
                 notes: "CloudTrail, access logging, data handling"
+            },
+
+            // Executive Communication Questions
+            {
+                category: "executive-communication",
+                question: "I like both Lambda and Kubernetes. I want to run Kubernetes on Lambda. How can you help me do that?",
+                complexity: "advanced",
+                round: "Executive",
+                notes: "Think about why they're asking - they want benefits of both. Answer: AWS Fargate combines advantages"
+            },
+            {
+                category: "executive-communication",
+                question: "How much will this design cost?",
+                complexity: "intermediate",
+                round: "Executive",
+                notes: "Must provide data-driven estimates with cost breakdown"
+            },
+            {
+                category: "executive-communication",
+                question: "How much money will it save compared to current architecture?",
+                complexity: "intermediate",
+                round: "Executive",
+                notes: "Quantify savings with percentages and dollar amounts"
+            },
+            {
+                category: "executive-communication",
+                question: "How much faster will this be?",
+                complexity: "intermediate",
+                round: "Executive",
+                notes: "Performance improvements with specific metrics"
+            },
+            {
+                category: "executive-communication",
+                question: "How much time do you need to modernize/migrate our systems?",
+                complexity: "intermediate",
+                round: "Executive",
+                notes: "Realistic timelines with phases and milestones"
+            },
+            {
+                category: "executive-communication",
+                question: "What benefit does your project bring to the company?",
+                complexity: "intermediate",
+                round: "Executive",
+                notes: "Business value: cost, speed to market, revenue impact, risk reduction"
+            },
+            {
+                category: "executive-communication",
+                question: "Tell me about a time you had to present to executives",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Focus on business impact and strategic communication"
+            },
+            {
+                category: "executive-communication",
+                question: "How would you convince a CTO to adopt [technology]?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Business case, risk mitigation, competitive advantage"
+            },
+            {
+                category: "executive-communication",
+                question: "You're presenting to a CIO about migration - how do you approach it?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Focus on business transformation and strategic value"
+            },
+            {
+                category: "executive-communication",
+                question: "Now present the same migration to a CTO - what changes?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Technical depth, architecture decisions, implementation details"
+            },
+
+            // Event-Driven Architecture Questions
+            {
+                category: "event-driven",
+                question: "What is event-driven architecture?",
+                complexity: "basic",
+                round: "Technical",
+                notes: "Producer/consumer decoupling, independent scaling, built-in retries"
+            },
+            {
+                category: "event-driven",
+                question: "What is the difference between synchronous and event-driven architecture?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Coupling, scaling, resilience, cost implications"
+            },
+            {
+                category: "event-driven",
+                question: "What are the superpowers of EventBridge?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Rule-based filtering, content routing, archive/replay, no code routing"
+            },
+            {
+                category: "event-driven",
+                question: "Why do we use SNS to SQS pattern instead of SNS directly to Lambda?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "SNS scales massively, SQS buffers, Lambda processes at comfortable rate"
+            },
+            {
+                category: "event-driven",
+                question: "Can EventBridge be completely replaced with API Gateway?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Different use cases - EventBridge for events, API Gateway for APIs"
+            },
+            {
+                category: "event-driven",
+                question: "When should you choose EventBridge vs SNS vs SQS?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "EventBridge for rules/routing, SNS for pub/sub, SQS for queuing"
+            },
+            {
+                category: "event-driven",
+                question: "What is the difference between SNS and EventBridge?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "SNS is pub/sub, EventBridge adds rules, filtering, and routing"
+            },
+            {
+                category: "event-driven",
+                question: "What are the drawbacks of event-driven architecture?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Complexity, debugging difficulty, eventual consistency"
+            },
+            {
+                category: "event-driven",
+                question: "How do you make event-driven architecture highly available?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Multi-AZ deployment, DLQ, retry policies, circuit breakers"
+            },
+            {
+                category: "event-driven",
+                question: "How do you secure event-driven architecture?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "IAM roles, resource policies, encryption in transit/rest"
+            },
+            {
+                category: "event-driven",
+                question: "How do you monitor event-driven architecture?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "CloudWatch metrics, X-Ray tracing, EventBridge insights"
+            },
+            {
+                category: "event-driven",
+                question: "How do you test event-driven applications without asking other teams to resend messages?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "EventBridge archive and replay feature"
+            },
+            {
+                category: "event-driven",
+                question: "When would you NOT use event-driven architecture?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Real-time requirements, simple request/response, immediate consistency needs"
+            },
+
+            // GenAI and RAG Questions
+            {
+                category: "genai",
+                question: "What is RAG (Retrieval Augmented Generation) and why was it created?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Combines retrieval with generation to provide current, accurate information"
+            },
+            {
+                category: "genai",
+                question: "Explain the difference between RAG and fine-tuning a model",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "RAG retrieves external data, fine-tuning modifies model weights"
+            },
+            {
+                category: "genai",
+                question: "When would you choose RAG over fine-tuning?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Frequently changing data, cost considerations, domain-specific knowledge"
+            },
+            {
+                category: "genai",
+                question: "How does the chunking process work in RAG?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Break documents into smaller pieces for better retrieval and context"
+            },
+            {
+                category: "genai",
+                question: "What are embeddings and how do they work in vector databases?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Vector representations of text for semantic similarity search"
+            },
+            {
+                category: "genai",
+                question: "Explain cosine similarity and how it's used for document retrieval",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Mathematical measure of similarity between vectors"
+            },
+            {
+                category: "genai",
+                question: "How does Bedrock Knowledge Base implement RAG automatically?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Managed chunking, embedding, vector storage, and retrieval"
+            },
+            {
+                category: "genai",
+                question: "What are Bedrock Agents and what problems do they solve?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Orchestrate complex tasks, chain-of-thought reasoning, API integration"
+            },
+            {
+                category: "genai",
+                question: "How do agents perform chain-of-thought reasoning?",
+                complexity: "advanced",
+                round: "Technical",
+                notes: "React framework - Reason and Act in iterative steps"
+            },
+            {
+                category: "genai",
+                question: "What is the difference between Action Groups and Knowledge Base in agents?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Action Groups call APIs, Knowledge Base retrieves documents"
+            },
+            {
+                category: "genai",
+                question: "How do you implement document-level security in Knowledge Base?",
+                complexity: "advanced",
+                round: "Technical",
+                notes: "Attribute-based access control, user context filtering"
+            },
+            {
+                category: "genai",
+                question: "What is temperature and how does it affect LLM output?",
+                complexity: "basic",
+                round: "Technical",
+                notes: "Controls randomness: 0 = deterministic, higher = more creative"
+            },
+            {
+                category: "genai",
+                question: "How do you choose between different models in Bedrock (Claude Haiku vs Sonnet)?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Consider speed, accuracy, cost, and use case requirements"
+            },
+            {
+                category: "genai",
+                question: "When would you use multiple agents vs a single agent?",
+                complexity: "advanced",
+                round: "Technical",
+                notes: "Specialized tasks, parallel processing, domain expertise"
+            },
+            {
+                category: "genai",
+                question: "How is Bedrock pricing calculated (input/output tokens)?",
+                complexity: "basic",
+                round: "Technical",
+                notes: "Separate pricing for input tokens and output tokens"
+            },
+            {
+                category: "genai",
+                question: "When would you choose agents over simple Knowledge Base RAG?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Complex workflows, API calls, multi-step reasoning required"
+            },
+
+            // Performance and Caching Questions
+            {
+                category: "performance",
+                question: "How do you optimize performance?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Caching, CDN, database optimization, right-sizing"
+            },
+            {
+                category: "performance",
+                question: "How do you scale to hyper scale?",
+                complexity: "advanced",
+                round: "Technical",
+                notes: "Auto scaling, load balancing, distributed architecture"
+            },
+            {
+                category: "performance",
+                question: "How do you reduce latency?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Caching, CDN, regional deployment, connection pooling"
+            },
+            {
+                category: "performance",
+                question: "What are the two major caching services in AWS?",
+                complexity: "basic",
+                round: "Technical",
+                notes: "ElastiCache for Memcached and ElastiCache for Redis"
+            },
+            {
+                category: "performance",
+                question: "What are the two different caching mechanisms?",
+                complexity: "basic",
+                round: "Technical",
+                notes: "Pull-through (lazy loading) and write-through caching"
+            },
+
+            // Database Deep-Dive Questions
+            {
+                category: "database",
+                question: "How do you do high availability or disaster recovery for RDS vs Aurora?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Multi-AZ, read replicas, Aurora global clusters"
+            },
+            {
+                category: "database",
+                question: "What are some pros and cons of DynamoDB, Aurora, RDS?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Compare performance, cost, management overhead, use cases"
+            },
+            {
+                category: "database",
+                question: "What is data analytics?",
+                complexity: "basic",
+                round: "Technical",
+                notes: "Process of examining data to draw insights and conclusions"
+            },
+            {
+                category: "database",
+                question: "What is the difference between OLAP and OLTP?",
+                complexity: "basic",
+                round: "Technical",
+                notes: "OLTP for transactions, OLAP for analytics and reporting"
+            },
+            {
+                category: "database",
+                question: "When to use OLAP versus OLTP?",
+                complexity: "basic",
+                round: "Technical",
+                notes: "OLTP for operational systems, OLAP for data warehousing"
+            },
+
+            // Customer Discovery Questions
+            {
+                category: "customer-discovery",
+                question: "Tell me about what you're doing with AWS",
+                complexity: "basic",
+                round: "Discovery",
+                notes: "Open-ended conversation starter for customer meetings"
+            },
+            {
+                category: "customer-discovery",
+                question: "What types of workloads run on AWS for you today?",
+                complexity: "basic",
+                round: "Discovery",
+                notes: "Understand current AWS usage and maturity"
+            },
+            {
+                category: "customer-discovery",
+                question: "Who is using AWS at your organization?",
+                complexity: "basic",
+                round: "Discovery",
+                notes: "Identify stakeholders and decision makers"
+            },
+            {
+                category: "customer-discovery",
+                question: "What is going well? What are challenges I can help solve?",
+                complexity: "basic",
+                round: "Discovery",
+                notes: "Understand pain points and opportunities"
+            },
+            {
+                category: "customer-discovery",
+                question: "Where is your focus in the next 18-24 months?",
+                complexity: "basic",
+                round: "Discovery",
+                notes: "Align solutions with business roadmap"
+            },
+            {
+                category: "customer-discovery",
+                question: "How are you securing your workloads today?",
+                complexity: "intermediate",
+                round: "Discovery",
+                notes: "Understand security posture and requirements"
+            },
+            {
+                category: "customer-discovery",
+                question: "What are your biggest priorities - cost, security, or speed to market?",
+                complexity: "basic",
+                round: "Discovery",
+                notes: "Understand primary drivers for technology decisions"
+            },
+            {
+                category: "customer-discovery",
+                question: "What's your team's expertise level with [technology]?",
+                complexity: "basic",
+                round: "Discovery",
+                notes: "Assess technical capabilities and training needs"
+            },
+
+            // Architecture Game/Quiz Questions
+            {
+                category: "architecture-quiz",
+                question: "Detect error in this architecture diagram",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Common errors: missing NAT gateway, wrong subnet types, security groups"
+            },
+            {
+                category: "architecture-quiz",
+                question: "How can EC2 reach internet?",
+                complexity: "basic",
+                round: "Technical",
+                notes: "NAT Gateway flow, internet gateway, routing tables"
+            },
+            {
+                category: "architecture-quiz",
+                question: "Improve the architecture, improve performance",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Add caching, read replicas, RDS proxy, CDN"
+            },
+            {
+                category: "architecture-quiz",
+                question: "Improve security in this architecture",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "WAF, SSL, encryption, security groups, NACLs"
+            },
+            {
+                category: "architecture-quiz",
+                question: "What are the differences between SNS and SQS?",
+                complexity: "basic",
+                round: "Technical",
+                notes: "SNS is pub/sub, SQS is queuing; different use cases"
+            },
+            {
+                category: "architecture-quiz",
+                question: "Match services to use cases",
+                complexity: "basic",
+                round: "Technical",
+                notes: "Relational database, serverless, containers, etc."
+            },
+
+            // Questions to Ask Interviewers
+            {
+                category: "questions-to-ask",
+                question: "What are the biggest things you're working on in the next year?",
+                complexity: "basic",
+                round: "All Rounds",
+                notes: "Strategic question for hiring managers"
+            },
+            {
+                category: "questions-to-ask",
+                question: "What is one of the biggest challenges you're facing?",
+                complexity: "basic",
+                round: "All Rounds",
+                notes: "Shows interest in helping solve problems"
+            },
+            {
+                category: "questions-to-ask",
+                question: "What should be working better than it is today?",
+                complexity: "basic",
+                round: "All Rounds",
+                notes: "Identifies improvement opportunities"
             }
         ];
 
