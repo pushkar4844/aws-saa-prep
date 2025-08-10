@@ -178,7 +178,33 @@
         .category.customer-discovery { background: #f0fdf4; color: #15803d; }
         .category.architecture-quiz { background: #fffbeb; color: #d97706; }
         .category.questions-to-ask { background: #f8fafc; color: #475569; }
-        .category.tam-specific { background: #fef2f2; color: #dc2626; }
+        
+        .leadership-principle {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 500;
+            margin-right: 4px;
+            margin-bottom: 2px;
+        }
+        
+        .lp-customer-obsession { background: #fef3c7; color: #92400e; }
+        .lp-ownership { background: #fee2e2; color: #991b1b; }
+        .lp-invent-simplify { background: #f3e8ff; color: #7c2d12; }
+        .lp-right-a-lot { background: #ecfdf5; color: #065f46; }
+        .lp-learn-curious { background: #dbeafe; color: #1e40af; }
+        .lp-hire-develop { background: #fdf2f8; color: #9d174d; }
+        .lp-insist-standards { background: #ede9fe; color: #6b21a8; }
+        .lp-think-big { background: #cffafe; color: #065f46; }
+        .lp-bias-action { background: #fef7ed; color: #ea580c; }
+        .lp-frugality { background: #e0f2fe; color: #0369a1; }
+        .lp-earn-trust { background: #f0fdf4; color: #15803d; }
+        .lp-dive-deep { background: #fffbeb; color: #d97706; }
+        .lp-backbone-commit { background: #f8fafc; color: #475569; }
+        .lp-deliver-results { background: #dcfce7; color: #166534; }
+        .lp-strive-best { background: #fef3c7; color: #92400e; }
+        .lp-success-scale { background: #fee2e2; color: #991b1b; }
         
         .question-text {
             line-height: 1.6;
@@ -223,6 +249,12 @@
             transform: translateY(-1px);
         }
         
+        .negative-indicator {
+            color: #dc2626;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
         @media (max-width: 768px) {
             .controls {
                 flex-direction: column;
@@ -243,12 +275,12 @@
     <div class="container">
         <div class="header">
             <h1>AWS Interview Questions Master Sheet</h1>
-            <p>Comprehensive collection of technical, behavioral, and system design questions</p>
+            <p>Comprehensive collection with Leadership Principles categorization</p>
         </div>
         
         <div class="controls">
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Search questions, categories, or keywords...">
+                <input type="text" id="searchInput" placeholder="Search questions, categories, leadership principles...">
             </div>
             
             <div class="category-filter">
@@ -268,7 +300,8 @@
                 <button class="filter-btn" data-filter="performance">Performance</button>
                 <button class="filter-btn" data-filter="database">Database</button>
                 <button class="filter-btn" data-filter="customer-discovery">Discovery</button>
-                <button class="filter-btn" data-filter="tam-specific">The Drunk TAM</button>
+                <button class="filter-btn" data-filter="architecture-quiz">Quiz</button>
+                <button class="filter-btn" data-filter="questions-to-ask">Questions to Ask</button>
             </div>
             
             <button class="export-btn" onclick="exportToCSV()">Export CSV</button>
@@ -283,10 +316,11 @@
                 <thead>
                     <tr>
                         <th style="width: 8%;">Category</th>
-                        <th style="width: 50%;">Question</th>
+                        <th style="width: 40%;">Question</th>
+                        <th style="width: 15%;">Leadership Principles</th>
                         <th style="width: 12%;">Complexity</th>
                         <th style="width: 10%;">Interview Round</th>
-                        <th style="width: 20%;">Notes/Context</th>
+                        <th style="width: 15%;">Notes/Context</th>
                     </tr>
                 </thead>
                 <tbody id="questionsBody">
@@ -304,510 +338,829 @@
                 question: "Tell me how you approached a migration",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Focus on 3-phase approach: Assess, Mobilize, Migrate & Modernize"
+                notes: "Focus on 3-phase approach: Assess, Mobilize, Migrate & Modernize",
+                leadershipPrinciples: []
             },
             {
                 category: "migration",
                 question: "How did you choose migration strategy?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Discuss 7 R's of migration and decision framework"
+                notes: "Discuss 7 R's of migration and decision framework",
+                leadershipPrinciples: []
             },
             {
                 category: "migration",
                 question: "How did you choose proof of concept?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Explain selection criteria and success metrics"
+                notes: "Explain selection criteria and success metrics",
+                leadershipPrinciples: []
             },
             {
                 category: "migration",
                 question: "What are the differences between operating in on-prem and AWS?",
                 complexity: "basic",
                 round: "Technical",
-                notes: "Compare operational models, scaling, security"
+                notes: "Compare operational models, scaling, security",
+                leadershipPrinciples: []
             },
             {
                 category: "migration",
                 question: "What challenges did you face during migration?",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "Use STAR format, focus on your specific role"
+                notes: "Use STAR format, focus on your specific role",
+                leadershipPrinciples: ["ownership", "dive-deep"]
             },
             {
                 category: "migration",
                 question: "What are the new things that you had to do?",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "Learning new technologies, adapting processes"
+                notes: "Learning new technologies, adapting processes",
+                leadershipPrinciples: ["learn-curious"]
             },
             {
                 category: "migration",
                 question: "Can you share the result of the migration?",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "Must include quantifiable metrics and business impact"
+                notes: "Must include quantifiable metrics and business impact",
+                leadershipPrinciples: ["deliver-results", "customer-obsession"]
             },
             {
                 category: "migration",
                 question: "How did you handle the part where there's no autoscaling in on-prem?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Discuss scaling challenges and cloud solutions"
+                notes: "Discuss scaling challenges and cloud solutions",
+                leadershipPrinciples: []
             },
             {
                 category: "migration",
                 question: "What are the seven R's of migration?",
                 complexity: "basic",
                 round: "Technical",
-                notes: "Rehost, Replatform, Refactor, Repurchase, Retain, Retire, Relocate"
+                notes: "Rehost, Replatform, Refactor, Repurchase, Retain, Retire, Relocate",
+                leadershipPrinciples: []
             },
             {
                 category: "migration",
                 question: "What is the most popular migration strategy?",
                 complexity: "basic",
                 round: "Technical",
-                notes: "Rehost (lift and shift) - explain why"
+                notes: "Rehost (lift and shift) - explain why",
+                leadershipPrinciples: []
             },
             {
                 category: "migration",
                 question: "What migration strategy have you worked on?",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "Specific examples with reasoning and outcomes"
+                notes: "Specific examples with reasoning and outcomes",
+                leadershipPrinciples: ["ownership", "right-a-lot"]
             },
             {
                 category: "migration",
                 question: "What would you recommend for migration strategy?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Depends on requirements, timeline, budget, complexity"
+                notes: "Depends on requirements, timeline, budget, complexity",
+                leadershipPrinciples: []
             },
             {
                 category: "migration",
                 question: "How many applications did you migrate and in what timeframe?",
                 complexity: "basic",
                 round: "Behavioral",
-                notes: "Be specific and realistic about numbers"
+                notes: "Be specific and realistic about numbers",
+                leadershipPrinciples: ["deliver-results"]
             },
             {
                 category: "migration",
                 question: "What tools did you use for migration?",
                 complexity: "basic",
                 round: "Technical",
-                notes: "ADS, MGN, DMS, Migration Hub, etc."
+                notes: "ADS, MGN, DMS, Migration Hub, etc.",
+                leadershipPrinciples: []
             },
 
-            // NEW BEHAVIORAL QUESTIONS ADDED FROM PROVIDED LIST
+            // BEHAVIORAL QUESTIONS WITH LEADERSHIP PRINCIPLES
+            
+            // Customer Obsession
             {
                 category: "behavioral",
-                question: "Tell me about a time when you tried to simplify a process but failed. What would you have done differently?",
+                question: "Tell me about a time when you had to prioritize some customer needs over others",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "Shows learning from failure, process improvement mindset"
-            },
-            {
-                category: "behavioral",
-                question: "Tell me about a time when you had to work with insufficient information or incomplete data",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Testing ability to work under uncertainty and make decisions with limited data"
-            },
-            {
-                category: "behavioral",
-                question: "Tell me about a situation or experience you went through that changed your way of thinking",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Growth mindset, adaptability, learning from experience"
-            },
-            {
-                category: "behavioral",
-                question: "Provide an example of when you took a calculated risk",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Risk assessment, decision-making under uncertainty, ownership"
-            },
-            {
-                category: "behavioral",
-                question: "Tell me about an unpopular decision of yours",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Have backbone, disagree and commit, leadership courage"
-            },
-            {
-                category: "behavioral",
-                question: "What project are you currently working on?",
-                complexity: "basic",
-                round: "Behavioral",
-                notes: "Current work relevance, technical depth, business impact"
-            },
-            {
-                category: "behavioral",
-                question: "What is the most challenging aspect of your current project?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Problem-solving approach, current technical challenges"
-            },
-            {
-                category: "behavioral",
-                question: "What was the most difficult bug that you fixed in the past 6 months?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Technical troubleshooting, persistence, learning"
-            },
-            {
-                category: "behavioral",
-                question: "How do you tackle challenges? Name a difficult challenge you faced while working on a project, how you overcame it, and what you learned",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Problem-solving methodology, resilience, continuous learning"
-            },
-            {
-                category: "behavioral",
-                question: "How do you deal with a failed deadline?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Accountability, communication, process improvement"
-            },
-            {
-                category: "behavioral",
-                question: "In your professional experience have you worked on something without getting approval from your manager?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Initiative, bias for action, judgment in decision-making"
-            },
-            {
-                category: "behavioral",
-                question: "What are you excited about?",
-                complexity: "basic",
-                round: "Behavioral",
-                notes: "Passion, motivation, cultural fit assessment"
-            },
-            {
-                category: "behavioral",
-                question: "What frustrates you?",
-                complexity: "basic",
-                round: "Behavioral",
-                notes: "Self-awareness, working style, potential red flags"
-            },
-            {
-                category: "behavioral",
-                question: "What does your best day of work look like?",
-                complexity: "basic",
-                round: "Behavioral",
-                notes: "Work preferences, motivation, cultural alignment"
-            },
-            {
-                category: "behavioral",
-                question: "Tell me about a time you were uncomfortable and how you dealt with it",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Resilience, adaptability, growth mindset"
-            },
-            {
-                category: "behavioral",
-                question: "Give me an example of when you've been a good host",
-                complexity: "basic",
-                round: "Behavioral",
-                notes: "Customer obsession, care for others, leadership qualities"
-            },
-            {
-                category: "behavioral",
-                question: "What is something new that you can teach your interviewer in a few minutes?",
-                complexity: "basic",
-                round: "Behavioral",
-                notes: "Communication skills, passion for learning, expertise demonstration"
-            },
-            {
-                category: "behavioral",
-                question: "What is the best gift you have ever given or received?",
-                complexity: "basic",
-                round: "Behavioral",
-                notes: "Values, thoughtfulness, personal connections"
-            },
-            {
-                category: "behavioral",
-                question: "Imagine it is your first day here at the company. What do you want to work on? What features would you improve on?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Initiative, research about company, strategic thinking"
-            },
-            {
-                category: "behavioral",
-                question: "What are the most interesting projects you have worked on and how might they be relevant to this company's environment?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Relevance to role, technical depth, business understanding"
-            },
-            {
-                category: "behavioral",
-                question: "What would excite you about working at [Company Name]?",
-                complexity: "basic",
-                round: "Behavioral",
-                notes: "Company research, cultural fit, genuine interest"
-            },
-
-            // Existing Behavioral Questions (STAR Format)
-            {
-                category: "behavioral",
-                question: "Tell me about yourself",
-                complexity: "basic",
-                round: "All Rounds",
-                notes: "3 minutes max: background, superpower, tie to position"
-            },
-            {
-                category: "behavioral",
-                question: "Tell me about a time when you went above and beyond",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Most common LP question - avoid troubleshooting answers"
-            },
-            {
-                category: "behavioral",
-                question: "Tell me about a time you dealt with a difficult co-worker",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Focus on your actions and positive resolution"
-            },
-            {
-                category: "behavioral",
-                question: "Tell me about a time you disagreed with your manager",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Show respectful disagreement and data-driven decisions"
-            },
-            {
-                category: "behavioral",
-                question: "Tell me about a time when you had a conflict with your team member",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Focus on conflict resolution and collaboration"
-            },
-            {
-                category: "behavioral",
-                question: "Tell me about a time when you solved an ambiguous situation",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Show structured problem-solving approach"
-            },
-            {
-                category: "behavioral",
-                question: "Tell me about the most complex project you have solved",
-                complexity: "advanced",
-                round: "Behavioral",
-                notes: "Core question - must show technical depth and business impact"
+                notes: "Customer obsession and judgment principles",
+                leadershipPrinciples: ["customer-obsession"],
+                isNegative: false
             },
             {
                 category: "behavioral",
                 question: "Tell me about a time when you found a simple solution to a complex problem",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "Shows innovation and customer obsession"
-            },
-            {
-                category: "behavioral",
-                question: "Tell me about a time when you had to prioritize some customer needs over others",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Customer obsession and judgment principles"
-            },
-            {
-                category: "behavioral",
-                question: "Describe a time when you had a tight deadline to meet - how did you get things done?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Bias for action and deliver results"
-            },
-            {
-                category: "behavioral",
-                question: "Tell me about a time when you learned something new and used it in your projects",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Learn and be curious principle"
-            },
-            {
-                category: "behavioral",
-                question: "Tell me about a time when you had to deal with ambiguous requirements",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Think big and dive deep principles"
-            },
-            {
-                category: "behavioral",
-                question: "Describe a time when you had to influence someone without authority",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Earn trust and have backbone, disagree and commit"
-            },
-            {
-                category: "behavioral",
-                question: "Tell me about a time when you made a mistake",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Ownership and learn from failures"
-            },
-            {
-                category: "behavioral",
-                question: "Why do you want to join this company and not other companies?",
-                complexity: "basic",
-                round: "Behavioral",
-                notes: "Research company's AWS journey and tie to your experience"
-            },
-            {
-                category: "behavioral",
-                question: "Tell me about a time when you reinvented and simplified something",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Invent and simplify leadership principle"
+                notes: "Shows innovation and customer obsession",
+                leadershipPrinciples: ["customer-obsession", "invent-simplify"],
+                isNegative: false
             },
             {
                 category: "behavioral",
                 question: "Tell me about a time when you delivered a project from ambiguous requirements",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "Customer obsession and think big"
-            },
-            {
-                category: "behavioral",
-                question: "Tell me about a time when you had to pivot after doing 75% of a project",
-                complexity: "advanced",
-                round: "Behavioral",
-                notes: "Shows adaptability and customer focus"
-            },
-            {
-                category: "behavioral",
-                question: "Tell me about two strengths and two weaknesses",
-                complexity: "basic",
-                round: "Behavioral",
-                notes: "What are you doing to resolve weaknesses?"
-            },
-
-            // Negative Behavioral Questions (Most Important - Question Behind The Question)
-            {
-                category: "behavioral",
-                question: "Tell me a time you had a conflict with your team member",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "QTBTQ: Testing EARN TRUST - vocally self-critical, treat others respectfully, don't blame others"
-            },
-            {
-                category: "behavioral",
-                question: "Tell me a time you had a conflict with your manager",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "QTBTQ: Testing HAVE BACKBONE DISAGREE & COMMIT - respectful disagreement, data-driven decisions"
-            },
-            {
-                category: "behavioral",
-                question: "Tell me a time when you had to push back (to a customer/manager)",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "QTBTQ: Testing CUSTOMER OBSESSION vs HAVE BACKBONE - when to disagree for customer's long-term benefit"
-            },
-            {
-                category: "behavioral",
-                question: "Tell me a time when you failed a project or made a mistake",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "QTBTQ: Testing OWNERSHIP - take responsibility, learn from failures, don't sacrifice long-term value"
+                notes: "Customer obsession and think big",
+                leadershipPrinciples: ["customer-obsession", "think-big"],
+                isNegative: false
             },
             {
                 category: "behavioral",
                 question: "Tell me a time when it did not work out or did not meet client's expectations",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "QTBTQ: Testing CUSTOMER OBSESSION & OWNERSHIP - how you handle customer disappointment and recover"
+                notes: "QTBTQ: Testing CUSTOMER OBSESSION & OWNERSHIP - how you handle customer disappointment and recover",
+                leadershipPrinciples: ["customer-obsession", "ownership"],
+                isNegative: true
             },
             {
                 category: "behavioral",
                 question: "Give an example when you did not meet client's expectations - what happened and how did you rectify?",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "QTBTQ: Testing DELIVER RESULTS & CUSTOMER OBSESSION - recovery strategy, learning, prevention"
+                notes: "QTBTQ: Testing DELIVER RESULTS & CUSTOMER OBSESSION - recovery strategy, learning, prevention",
+                leadershipPrinciples: ["customer-obsession", "deliver-results"],
+                isNegative: true
             },
             {
                 category: "behavioral",
-                question: "What is your weakness?",
+                question: "Give me an example of when you've been a good host",
                 complexity: "basic",
                 round: "Behavioral",
-                notes: "QTBTQ: Testing EARN TRUST - vocally self-critical, body odor doesn't smell like perfume, genuine self-awareness"
+                notes: "Customer obsession, care for others, leadership qualities",
+                leadershipPrinciples: ["customer-obsession"],
+                isNegative: false
             },
             {
                 category: "behavioral",
-                question: "Tell me a time when you had to apologize to someone",
+                question: "Tell me about a time when you had to push back (to a customer/manager)",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "QTBTQ: Testing EARN TRUST - vulnerability, accountability, relationship repair, humility"
+                notes: "QTBTQ: Testing CUSTOMER OBSESSION vs HAVE BACKBONE - when to disagree for customer's long-term benefit",
+                leadershipPrinciples: ["customer-obsession", "backbone-commit"],
+                isNegative: true
             },
             {
                 category: "behavioral",
-                question: "Tell me about a time when you had to work with unclear or ambiguous responsibilities",
+                question: "Describe a time when you had a difficult time with a customer and how you handled it",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "QTBTQ: Testing BIAS FOR ACTION - decisions are reversible, don't need extensive study, self-starter mentality"
+                notes: "TAM core competency: Customer relationship management, issue resolution, and learning outcomes",
+                leadershipPrinciples: ["customer-obsession", "earn-trust"],
+                isNegative: true
             },
+
+            // Ownership
             {
                 category: "behavioral",
-                question: "Tell me a time when you were 75% through your project and had to pivot strategy",
-                complexity: "advanced",
-                round: "Behavioral",
-                notes: "QTBTQ: Testing BIAS FOR ACTION & OWNERSHIP - calculated risk-taking, resilience, decision-making under uncertainty"
-            },
-            {
-                category: "behavioral",
-                question: "What did you do when you needed to motivate a group of individuals or promote collaboration?",
+                question: "Tell me about a time when you made a mistake",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "QTBTQ: Testing EARN TRUST & DIVE DEEP - leadership without authority, team building, influence skills"
+                notes: "Ownership and learn from failures",
+                leadershipPrinciples: ["ownership", "learn-curious"],
+                isNegative: true
             },
             {
                 category: "behavioral",
-                question: "How did you get non-performing team member back to contribute?",
+                question: "Tell me a time when you failed a project or made a mistake",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "QTBTQ: Testing EARN TRUST & INSIST ON HIGHEST STANDARDS - difficult conversations, performance management"
-            },
-            {
-                category: "behavioral",
-                question: "Why do you want to join AWS (or this company)?",
-                complexity: "basic",
-                round: "Behavioral",
-                notes: "QTBTQ: Testing cultural fit, research depth, genuine interest. Must tie to Leadership Principles"
-            },
-            {
-                category: "behavioral",
-                question: "Why did you leave your last company?",
-                complexity: "basic",
-                round: "Behavioral",
-                notes: "QTBTQ: Testing OWNERSHIP & EARN TRUST - no bad-mouthing, focus on growth, positive framing"
-            },
-            {
-                category: "behavioral",
-                question: "Why is there a gap in your resume?",
-                complexity: "basic",
-                round: "Behavioral",
-                notes: "QTBTQ: Testing EARN TRUST - honesty, transparency, what did you learn during the gap"
-            },
-            {
-                category: "behavioral",
-                question: "Tell me a time you delivered a big project in a short timeline",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "QTBTQ: Testing BIAS FOR ACTION - speed matters, many decisions are reversible, calculated risk-taking"
+                notes: "QTBTQ: Testing OWNERSHIP - take responsibility, learn from failures, don't sacrifice long-term value",
+                leadershipPrinciples: ["ownership"],
+                isNegative: true
             },
             {
                 category: "behavioral",
                 question: "Tell me a time when you took responsibility outside your job description",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "QTBTQ: Testing OWNERSHIP - think long-term, act for entire company, never say 'that's not my job'"
+                notes: "QTBTQ: Testing OWNERSHIP - think long-term, act for entire company, never say 'that's not my job'",
+                leadershipPrinciples: ["ownership"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "In your professional experience have you worked on something without getting approval from your manager?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Initiative, bias for action, judgment in decision-making",
+                leadershipPrinciples: ["ownership", "bias-action"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "You made a bad decision, what did you learn?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "STAR format: How you found it was bad, communicated to stakeholders, documented, delivered training. Focus on 'Learn and be curious' LP",
+                leadershipPrinciples: ["ownership", "learn-curious"],
+                isNegative: true
+            },
+            {
+                category: "behavioral",
+                question: "Why did you leave your last company?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing OWNERSHIP & EARN TRUST - no bad-mouthing, focus on growth, positive framing",
+                leadershipPrinciples: ["ownership", "earn-trust"],
+                isNegative: true
+            },
+            {
+                category: "behavioral",
+                question: "Autonomous contribution to business - develop AWS service",
+                complexity: "advanced",
+                round: "Behavioral",
+                notes: "Show initiative in building internal tools, eliminating repetitive tasks, ROI focus, customer satisfaction increase",
+                leadershipPrinciples: ["ownership", "invent-simplify"],
+                isNegative: false
+            },
+
+            // Invent and Simplify
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you reinvented and simplified something",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Invent and simplify leadership principle",
+                leadershipPrinciples: ["invent-simplify"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you tried to simplify a process but failed. What would you have done differently?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Shows learning from failure, process improvement mindset",
+                leadershipPrinciples: ["invent-simplify", "learn-curious"],
+                isNegative: true
+            },
+            {
+                category: "behavioral",
+                question: "How do you get rid of repeatable tasks and show ROI?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Automation mindset, efficiency improvements, measurable business impact",
+                leadershipPrinciples: ["invent-simplify", "frugality"],
+                isNegative: false
+            },
+
+            // Are Right, A Lot
+            {
+                category: "behavioral",
+                question: "Provide an example of when you took a calculated risk",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Risk assessment, decision-making under uncertainty, ownership",
+                leadershipPrinciples: ["right-a-lot", "ownership"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about an unpopular decision of yours",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Have backbone, disagree and commit, leadership courage",
+                leadershipPrinciples: ["right-a-lot", "backbone-commit"],
+                isNegative: false
+            },
+
+            // Learn and Be Curious
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you learned something new and used it in your projects",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Learn and be curious principle",
+                leadershipPrinciples: ["learn-curious"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "What is something new that you can teach your interviewer in a few minutes?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "Communication skills, passion for learning, expertise demonstration",
+                leadershipPrinciples: ["learn-curious"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "Realized you needed deeper level of expertise - what did you do to learn?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Example: DynamoDB deep dive, exploring alternatives, systematic learning approach",
+                leadershipPrinciples: ["learn-curious"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "What steps do you take to learn something new?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Learning methodology, continuous improvement approach",
+                leadershipPrinciples: ["learn-curious"],
+                isNegative: false
+            },
+
+            // Hire and Develop the Best
+            // (Most questions here would be for manager-level positions)
+
+            // Insist on the Highest Standards
+            {
+                category: "behavioral",
+                question: "How did you get non-performing team member back to contribute?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing EARN TRUST & INSIST ON HIGHEST STANDARDS - difficult conversations, performance management",
+                leadershipPrinciples: ["insist-standards", "earn-trust"],
+                isNegative: true
+            },
+
+            // Think Big
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you had to deal with ambiguous requirements",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Think big and dive deep principles",
+                leadershipPrinciples: ["think-big", "dive-deep"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "Imagine it is your first day here at the company. What do you want to work on? What features would you improve on?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Initiative, research about company, strategic thinking",
+                leadershipPrinciples: ["think-big", "customer-obsession"],
+                isNegative: false
+            },
+
+            // Bias for Action
+            {
+                category: "behavioral",
+                question: "Describe a time when you had a tight deadline to meet - how did you get things done?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Bias for action and deliver results",
+                leadershipPrinciples: ["bias-action", "deliver-results"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you had to work with unclear or ambiguous responsibilities",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing BIAS FOR ACTION - decisions are reversible, don't need extensive study, self-starter mentality",
+                leadershipPrinciples: ["bias-action"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "Tell me a time when you were 75% through your project and had to pivot strategy",
+                complexity: "advanced",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing BIAS FOR ACTION & OWNERSHIP - calculated risk-taking, resilience, decision-making under uncertainty",
+                leadershipPrinciples: ["bias-action", "ownership"],
+                isNegative: true
+            },
+            {
+                category: "behavioral",
+                question: "Tell me a time you delivered a big project in a short timeline",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing BIAS FOR ACTION - speed matters, many decisions are reversible, calculated risk-taking",
+                leadershipPrinciples: ["bias-action", "deliver-results"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you had to work with insufficient information or incomplete data",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Testing ability to work under uncertainty and make decisions with limited data",
+                leadershipPrinciples: ["bias-action"],
+                isNegative: false
+            },
+
+            // Frugality
+            // (Generally covered in technical/cost optimization questions)
+
+            // Earn Trust
+            {
+                category: "behavioral",
+                question: "Tell me about a time you dealt with a difficult co-worker",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Focus on your actions and positive resolution",
+                leadershipPrinciples: ["earn-trust"],
+                isNegative: true
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you had a conflict with your team member",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Focus on conflict resolution and collaboration",
+                leadershipPrinciples: ["earn-trust"],
+                isNegative: true
+            },
+            {
+                category: "behavioral",
+                question: "Tell me a time you had a conflict with your team member",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing EARN TRUST - vocally self-critical, treat others respectfully, don't blame others",
+                leadershipPrinciples: ["earn-trust"],
+                isNegative: true
+            },
+            {
+                category: "behavioral",
+                question: "What is your weakness?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing EARN TRUST - vocally self-critical, body odor doesn't smell like perfume, genuine self-awareness",
+                leadershipPrinciples: ["earn-trust"],
+                isNegative: true
+            },
+            {
+                category: "behavioral",
+                question: "Tell me a time when you had to apologize to someone",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing EARN TRUST - vulnerability, accountability, relationship repair, humility",
+                leadershipPrinciples: ["earn-trust"],
+                isNegative: true
             },
             {
                 category: "behavioral",
                 question: "Tell me about a time when you had to earn someone's trust",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "QTBTQ: Testing EARN TRUST - listen attentively, speak candidly, vocally self-critical when awkward"
+                notes: "QTBTQ: Testing EARN TRUST - listen attentively, speak candidly, vocally self-critical when awkward",
+                leadershipPrinciples: ["earn-trust"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "What did you do when you needed to motivate a group of individuals or promote collaboration?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing EARN TRUST & DIVE DEEP - leadership without authority, team building, influence skills",
+                leadershipPrinciples: ["earn-trust", "dive-deep"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "Tell me two strengths and two weaknesses",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "What are you doing to resolve weaknesses?",
+                leadershipPrinciples: ["earn-trust"],
+                isNegative: true
+            },
+            {
+                category: "behavioral",
+                question: "Why is there a gap in your resume?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing EARN TRUST - honesty, transparency, what did you learn during the gap",
+                leadershipPrinciples: ["earn-trust"],
+                isNegative: true
+            },
+            {
+                category: "behavioral",
+                question: "Tough feedback from anyone - how did you make it positive?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Growth mindset, continuous improvement, turning feedback into actionable improvements",
+                leadershipPrinciples: ["earn-trust", "learn-curious"],
+                isNegative: true
+            },
+
+            // Dive Deep
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you solved an ambiguous situation",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Show structured problem-solving approach",
+                leadershipPrinciples: ["dive-deep"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "What was the most difficult bug that you fixed in the past 6 months?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Technical troubleshooting, persistence, learning",
+                leadershipPrinciples: ["dive-deep", "learn-curious"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "How do you tackle challenges? Name a difficult challenge you faced while working on a project, how you overcame it, and what you learned",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Problem-solving methodology, resilience, continuous learning",
+                leadershipPrinciples: ["dive-deep", "learn-curious"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "How did you find the cause of the customer issue?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Root cause analysis methodology, investigation approach",
+                leadershipPrinciples: ["dive-deep"],
+                isNegative: false
+            },
+
+            // Have Backbone; Disagree and Commit
+            {
+                category: "behavioral",
+                question: "Tell me about a time you disagreed with your manager",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Show respectful disagreement and data-driven decisions",
+                leadershipPrinciples: ["backbone-commit"],
+                isNegative: true
+            },
+            {
+                category: "behavioral",
+                question: "Tell me a time you had a conflict with your manager",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing HAVE BACKBONE DISAGREE & COMMIT - respectful disagreement, data-driven decisions",
+                leadershipPrinciples: ["backbone-commit"],
+                isNegative: true
+            },
+            {
+                category: "behavioral",
+                question: "Describe a time when you had to influence someone without authority",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Earn trust and have backbone, disagree and commit",
+                leadershipPrinciples: ["backbone-commit", "earn-trust"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "When you strongly disagreed with your manager - what was it, how did you handle it?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Show data-driven disagreement, professional approach, and focus on company benefits and recognition",
+                leadershipPrinciples: ["backbone-commit"],
+                isNegative: true
+            },
+
+            // Deliver Results
+            {
+                category: "behavioral",
+                question: "Tell me about the most complex project you have solved",
+                complexity: "advanced",
+                round: "Behavioral",
+                notes: "Core question - must show technical depth and business impact",
+                leadershipPrinciples: ["deliver-results", "dive-deep"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "How do you deal with a failed deadline?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Accountability, communication, process improvement",
+                leadershipPrinciples: ["deliver-results", "ownership"],
+                isNegative: true
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you had to pivot after doing 75% of a project",
+                complexity: "advanced",
+                round: "Behavioral",
+                notes: "Shows adaptability and customer focus",
+                leadershipPrinciples: ["deliver-results", "customer-obsession"],
+                isNegative: true
+            },
+            {
+                category: "behavioral",
+                question: "When you not only met goal but exceeded expectations",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Must include: deadline, execution approach, communication strategy. Show 'Deliver Results' LP",
+                leadershipPrinciples: ["deliver-results"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "What was the deadline for exceeding expectations?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Timeline management, pressure handling, delivery focus",
+                leadershipPrinciples: ["deliver-results"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "How did you execute to exceed expectations?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Execution strategy, resource management, innovation approach",
+                leadershipPrinciples: ["deliver-results"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "How did you communicate the exceeded results?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Stakeholder communication, impact presentation, value articulation",
+                leadershipPrinciples: ["deliver-results"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "What you could have done to meet the deadline?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Retrospective analysis, process improvements, resource planning",
+                leadershipPrinciples: ["deliver-results", "learn-curious"],
+                isNegative: true
+            },
+            {
+                category: "behavioral",
+                question: "Return on investment calculation and customer satisfaction increase",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Business metrics, value demonstration, customer impact measurement",
+                leadershipPrinciples: ["deliver-results", "customer-obsession"],
+                isNegative: false
+            },
+
+            // Strive to be Earth's Best Employer
+            // (More relevant for manager positions)
+
+            // Success and Scale Bring Broad Responsibility
+            // (More relevant for senior/principal positions)
+
+            // Multiple Leadership Principles
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you went above and beyond",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Most common LP question - avoid troubleshooting answers",
+                leadershipPrinciples: ["customer-obsession", "ownership"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "Worked against client timeline - how did you prioritize and identify high-impact items?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Show risk identification skills and data-driven prioritization. Focus on client value delivery",
+                leadershipPrinciples: ["customer-obsession", "right-a-lot"],
+                isNegative: true
+            },
+
+            // General Behavioral Questions
+            {
+                category: "behavioral",
+                question: "Tell me about yourself",
+                complexity: "basic",
+                round: "All Rounds",
+                notes: "3 minutes max: background, superpower, tie to position",
+                leadershipPrinciples: [],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "What project are you currently working on?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "Current work relevance, technical depth, business impact",
+                leadershipPrinciples: [],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "What is the most challenging aspect of your current project?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Problem-solving approach, current technical challenges",
+                leadershipPrinciples: [],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a situation or experience you went through that changed your way of thinking",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Growth mindset, adaptability, learning from experience",
+                leadershipPrinciples: ["learn-curious"],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "What are you excited about?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "Passion, motivation, cultural fit assessment",
+                leadershipPrinciples: [],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "What frustrates you?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "Self-awareness, working style, potential red flags",
+                leadershipPrinciples: [],
+                isNegative: true
+            },
+            {
+                category: "behavioral",
+                question: "What does your best day of work look like?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "Work preferences, motivation, cultural alignment",
+                leadershipPrinciples: [],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time you were uncomfortable and how you dealt with it",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Resilience, adaptability, growth mindset",
+                leadershipPrinciples: ["learn-curious"],
+                isNegative: true
+            },
+            {
+                category: "behavioral",
+                question: "What is the best gift you have ever given or received?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "Values, thoughtfulness, personal connections",
+                leadershipPrinciples: [],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "What are the most interesting projects you have worked on and how might they be relevant to this company's environment?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Relevance to role, technical depth, business understanding",
+                leadershipPrinciples: [],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "What would excite you about working at [Company Name]?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "Company research, cultural fit, genuine interest",
+                leadershipPrinciples: [],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "Why do you want to join this company and not other companies?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "Research company's AWS journey and tie to your experience",
+                leadershipPrinciples: [],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "Why do you want to join AWS (or this company)?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "QTBTQ: Testing cultural fit, research depth, genuine interest. Must tie to Leadership Principles",
+                leadershipPrinciples: [],
+                isNegative: false
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you had to present to executives",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Focus on business impact and strategic communication",
+                leadershipPrinciples: ["think-big"],
+                isNegative: false
             },
 
             // Technical Questions
@@ -816,35 +1169,40 @@
                 question: "What is the difference between physical server, virtual machine, and container?",
                 complexity: "basic",
                 round: "Technical",
-                notes: "Fundamental concepts - resource sharing, isolation"
+                notes: "Fundamental concepts - resource sharing, isolation",
+                leadershipPrinciples: []
             },
             {
                 category: "technical",
                 question: "What are the bottlenecks in three-tier architecture?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Database, network, compute - explain each layer"
+                notes: "Database, network, compute - explain each layer",
+                leadershipPrinciples: []
             },
             {
                 category: "technical",
                 question: "How do you scale an application?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Vertical vs horizontal scaling, auto scaling strategies"
+                notes: "Vertical vs horizontal scaling, auto scaling strategies",
+                leadershipPrinciples: []
             },
             {
                 category: "technical",
                 question: "Tell me about autoscaling groups and load balancers",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "How they work together, configuration options"
+                notes: "How they work together, configuration options",
+                leadershipPrinciples: []
             },
             {
                 category: "technical",
                 question: "What do you think about autoscaling groups? Tell me about the time you last used autoscaling groups",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "Combine technical knowledge with experience"
+                notes: "Combine technical knowledge with experience",
+                leadershipPrinciples: []
             },
 
             // System Design Questions
@@ -853,154 +1211,176 @@
                 question: "Design Amazon.com (retail website)",
                 complexity: "advanced",
                 round: "System Design",
-                notes: "Focus on catalog, cart, order processing, recommendations"
+                notes: "Focus on catalog, cart, order processing, recommendations",
+                leadershipPrinciples: []
             },
             {
                 category: "system-design",
                 question: "Design Prime Video",
                 complexity: "advanced",
                 round: "System Design",
-                notes: "Video streaming, CDN, metadata, user management"
+                notes: "Video streaming, CDN, metadata, user management",
+                leadershipPrinciples: []
             },
             {
                 category: "system-design",
                 question: "Design YouTube",
                 complexity: "advanced",
                 round: "System Design",
-                notes: "Video upload, processing, streaming, recommendations"
+                notes: "Video upload, processing, streaming, recommendations",
+                leadershipPrinciples: []
             },
             {
                 category: "system-design",
                 question: "Design a parking garage system",
                 complexity: "intermediate",
                 round: "System Design",
-                notes: "Real-time availability, payment processing, entry/exit"
+                notes: "Real-time availability, payment processing, entry/exit",
+                leadershipPrinciples: []
             },
             {
                 category: "system-design",
                 question: "Design Uber",
                 complexity: "advanced",
                 round: "System Design",
-                notes: "Matching, location services, pricing, payments"
+                notes: "Matching, location services, pricing, payments",
+                leadershipPrinciples: []
             },
             {
                 category: "system-design",
                 question: "Design a meeting action items system with GenAI",
                 complexity: "advanced",
                 round: "System Design",
-                notes: "Modern AI integration, meeting processing, task management"
+                notes: "Modern AI integration, meeting processing, task management",
+                leadershipPrinciples: []
             },
             {
                 category: "system-design",
                 question: "What other service can you pick instead of EC2? How does that change the design?",
                 complexity: "intermediate",
                 round: "System Design",
-                notes: "Lambda, ECS, EKS - trade-offs and implications"
+                notes: "Lambda, ECS, EKS - trade-offs and implications",
+                leadershipPrinciples: []
             },
             {
                 category: "system-design",
                 question: "If I swap out EC2 with Lambda, what changes in the design factors?",
                 complexity: "intermediate",
                 round: "System Design",
-                notes: "Serverless implications: scaling, cost, cold starts"
+                notes: "Serverless implications: scaling, cost, cold starts",
+                leadershipPrinciples: []
             },
             {
                 category: "system-design",
                 question: "If I swap out Aurora with DynamoDB, what changes?",
                 complexity: "intermediate",
                 round: "System Design",
-                notes: "NoSQL vs relational trade-offs"
+                notes: "NoSQL vs relational trade-offs",
+                leadershipPrinciples: []
             },
             {
                 category: "system-design",
                 question: "Why did you choose DynamoDB over Aurora for this use case?",
                 complexity: "intermediate",
                 round: "System Design",
-                notes: "Decision criteria and justification"
+                notes: "Decision criteria and justification",
+                leadershipPrinciples: []
             },
             {
                 category: "system-design",
                 question: "What happens if I want to use API Gateway instead of Application Load Balancer?",
                 complexity: "intermediate",
                 round: "System Design",
-                notes: "API management vs load balancing trade-offs"
+                notes: "API management vs load balancing trade-offs",
+                leadershipPrinciples: []
             },
             {
                 category: "system-design",
                 question: "How do you validate if your design is good?",
                 complexity: "intermediate",
                 round: "System Design",
-                notes: "Testing, monitoring, performance metrics"
+                notes: "Testing, monitoring, performance metrics",
+                leadershipPrinciples: []
             },
             {
                 category: "system-design",
                 question: "How do you prioritize one design factor versus another?",
                 complexity: "intermediate",
                 round: "System Design",
-                notes: "Business requirements drive technical decisions"
+                notes: "Business requirements drive technical decisions",
+                leadershipPrinciples: []
             },
             {
                 category: "system-design",
                 question: "What if I want to put 20,000 transactions per second through this system?",
                 complexity: "advanced",
                 round: "System Design",
-                notes: "High-scale considerations and bottlenecks"
+                notes: "High-scale considerations and bottlenecks",
+                leadershipPrinciples: []
             },
             {
                 category: "system-design",
                 question: "How would you handle high burst traffic?",
                 complexity: "advanced",
                 round: "System Design",
-                notes: "Burst scaling, pre-warming, queuing"
+                notes: "Burst scaling, pre-warming, queuing",
+                leadershipPrinciples: []
             },
             {
                 category: "system-design",
                 question: "What's the difference between bar rate scaling and peak scaling?",
                 complexity: "intermediate",
                 round: "System Design",
-                notes: "Sustained vs burst traffic patterns"
+                notes: "Sustained vs burst traffic patterns",
+                leadershipPrinciples: []
             },
             {
                 category: "system-design",
                 question: "How do you make this system highly scalable?",
                 complexity: "intermediate",
                 round: "System Design",
-                notes: "Horizontal scaling, caching, database optimization"
+                notes: "Horizontal scaling, caching, database optimization",
+                leadershipPrinciples: []
             },
             {
                 category: "system-design",
                 question: "How do you make this system highly available?",
                 complexity: "intermediate",
                 round: "System Design",
-                notes: "Multi-AZ, redundancy, failover strategies"
+                notes: "Multi-AZ, redundancy, failover strategies",
+                leadershipPrinciples: []
             },
             {
                 category: "system-design",
                 question: "How do you secure this architecture?",
                 complexity: "intermediate",
                 round: "System Design",
-                notes: "Defense in depth, encryption, access controls"
+                notes: "Defense in depth, encryption, access controls",
+                leadershipPrinciples: []
             },
             {
                 category: "system-design",
                 question: "How do you make this cost-effective?",
                 complexity: "intermediate",
                 round: "System Design",
-                notes: "Right-sizing, reserved instances, spot instances"
+                notes: "Right-sizing, reserved instances, spot instances",
+                leadershipPrinciples: []
             },
             {
                 category: "system-design",
                 question: "How do you monitor this system?",
                 complexity: "intermediate",
                 round: "System Design",
-                notes: "CloudWatch, X-Ray, logging strategies"
+                notes: "CloudWatch, X-Ray, logging strategies",
+                leadershipPrinciples: []
             },
             {
                 category: "system-design",
                 question: "How do you ensure fault tolerance?",
                 complexity: "intermediate",
                 round: "System Design",
-                notes: "Circuit breakers, retries, graceful degradation"
+                notes: "Circuit breakers, retries, graceful degradation",
+                leadershipPrinciples: []
             },
 
             // Well-Architected Framework Questions
@@ -1009,28 +1389,32 @@
                 question: "Have you used AWS Well-Architected Framework?",
                 complexity: "basic",
                 round: "Technical",
-                notes: "Yes/no with specific examples"
+                notes: "Yes/no with specific examples",
+                leadershipPrinciples: []
             },
             {
                 category: "well-architected",
                 question: "Give me an example where you used Well-Architected Framework",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "Specific pillar, findings, remediation"
+                notes: "Specific pillar, findings, remediation",
+                leadershipPrinciples: ["dive-deep"]
             },
             {
                 category: "well-architected",
                 question: "How have you implemented gaps found in Well-Architected reviews?",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "Prioritization and implementation strategy"
+                notes: "Prioritization and implementation strategy",
+                leadershipPrinciples: ["deliver-results"]
             },
             {
                 category: "well-architected",
                 question: "What are the six pillars of Well-Architected Framework?",
                 complexity: "basic",
                 round: "Technical",
-                notes: "Operational Excellence, Security, Reliability, Performance, Cost, Sustainability"
+                notes: "Operational Excellence, Security, Reliability, Performance, Cost, Sustainability",
+                leadershipPrinciples: []
             },
 
             // Architecture Decision Questions
@@ -1039,28 +1423,32 @@
                 question: "Give me an example where you had multiple competing designs - how did you select one?",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "Decision criteria, trade-off analysis, stakeholder buy-in"
+                notes: "Decision criteria, trade-off analysis, stakeholder buy-in",
+                leadershipPrinciples: ["right-a-lot", "dive-deep"]
             },
             {
                 category: "architecture",
                 question: "How do you compare AWS native services vs third-party tools?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Integration, support, cost, lock-in considerations"
+                notes: "Integration, support, cost, lock-in considerations",
+                leadershipPrinciples: []
             },
             {
                 category: "architecture",
                 question: "Walk me through your decision process for choosing between Lambda vs EC2",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Use cases, trade-offs, cost implications"
+                notes: "Use cases, trade-offs, cost implications",
+                leadershipPrinciples: []
             },
             {
                 category: "architecture",
                 question: "How do you evaluate Secrets Manager vs HashiCorp Vault?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Feature comparison, integration, operational overhead"
+                notes: "Feature comparison, integration, operational overhead",
+                leadershipPrinciples: []
             },
 
             // Security Questions
@@ -1069,35 +1457,40 @@
                 question: "How do you protect network resources?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "VPC, security groups, NACLs, WAF"
+                notes: "VPC, security groups, NACLs, WAF",
+                leadershipPrinciples: []
             },
             {
                 category: "security",
                 question: "How do you protect data at rest?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Encryption, KMS, key rotation"
+                notes: "Encryption, KMS, key rotation",
+                leadershipPrinciples: []
             },
             {
                 category: "security",
                 question: "How do you handle compliance requirements (PCI, HIPAA, FedRAMP)?",
                 complexity: "advanced",
                 round: "Technical",
-                notes: "Specific controls, auditing, documentation"
+                notes: "Specific controls, auditing, documentation",
+                leadershipPrinciples: []
             },
             {
                 category: "security",
                 question: "What security controls would you implement for a financial services company?",
                 complexity: "advanced",
                 round: "Technical",
-                notes: "Industry-specific requirements and best practices"
+                notes: "Industry-specific requirements and best practices",
+                leadershipPrinciples: []
             },
             {
                 category: "security",
                 question: "How do you scan for vulnerabilities in your infrastructure?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Inspector, Security Hub, GuardDuty"
+                notes: "Inspector, Security Hub, GuardDuty",
+                leadershipPrinciples: []
             },
 
             // Kubernetes Questions
@@ -1106,28 +1499,32 @@
                 question: "How does Kubernetes application scaling work?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "HPA, VPA, cluster autoscaler"
+                notes: "HPA, VPA, cluster autoscaler",
+                leadershipPrinciples: []
             },
             {
                 category: "kubernetes",
                 question: "What's the difference between containerization and virtualization?",
                 complexity: "basic",
                 round: "Technical",
-                notes: "Resource usage, isolation, portability"
+                notes: "Resource usage, isolation, portability",
+                leadershipPrinciples: []
             },
             {
                 category: "kubernetes",
                 question: "How do you make Kubernetes applications highly available?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Multi-AZ deployments, pod disruption budgets"
+                notes: "Multi-AZ deployments, pod disruption budgets",
+                leadershipPrinciples: []
             },
             {
                 category: "kubernetes",
                 question: "Do you know Helm?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Only ask if candidate claims deep K8s knowledge"
+                notes: "Only ask if candidate claims deep K8s knowledge",
+                leadershipPrinciples: []
             },
 
             // Compliance Questions
@@ -1136,28 +1533,32 @@
                 question: "How do you design for PCI compliance?",
                 complexity: "advanced",
                 round: "Technical",
-                notes: "Network segmentation, encryption, access controls"
+                notes: "Network segmentation, encryption, access controls",
+                leadershipPrinciples: []
             },
             {
                 category: "compliance",
                 question: "What services are available in GovCloud?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Subset of services, compliance requirements"
+                notes: "Subset of services, compliance requirements",
+                leadershipPrinciples: []
             },
             {
                 category: "compliance",
                 question: "How do design factors change for regulated industries?",
                 complexity: "advanced",
                 round: "Technical",
-                notes: "Additional controls, documentation, auditing"
+                notes: "Additional controls, documentation, auditing",
+                leadershipPrinciples: []
             },
             {
                 category: "compliance",
                 question: "What additional logging/auditing is required for HIPAA?",
                 complexity: "advanced",
                 round: "Technical",
-                notes: "CloudTrail, access logging, data handling"
+                notes: "CloudTrail, access logging, data handling",
+                leadershipPrinciples: []
             },
 
             // Executive Communication Questions
@@ -1166,70 +1567,72 @@
                 question: "I like both Lambda and Kubernetes. I want to run Kubernetes on Lambda. How can you help me do that?",
                 complexity: "advanced",
                 round: "Executive",
-                notes: "Think about why they're asking - they want benefits of both. Answer: AWS Fargate combines advantages"
+                notes: "Think about why they're asking - they want benefits of both. Answer: AWS Fargate combines advantages",
+                leadershipPrinciples: []
             },
             {
                 category: "executive-communication",
                 question: "How much will this design cost?",
                 complexity: "intermediate",
                 round: "Executive",
-                notes: "Must provide data-driven estimates with cost breakdown"
+                notes: "Must provide data-driven estimates with cost breakdown",
+                leadershipPrinciples: []
             },
             {
                 category: "executive-communication",
                 question: "How much money will it save compared to current architecture?",
                 complexity: "intermediate",
                 round: "Executive",
-                notes: "Quantify savings with percentages and dollar amounts"
+                notes: "Quantify savings with percentages and dollar amounts",
+                leadershipPrinciples: []
             },
             {
                 category: "executive-communication",
                 question: "How much faster will this be?",
                 complexity: "intermediate",
                 round: "Executive",
-                notes: "Performance improvements with specific metrics"
+                notes: "Performance improvements with specific metrics",
+                leadershipPrinciples: []
             },
             {
                 category: "executive-communication",
                 question: "How much time do you need to modernize/migrate our systems?",
                 complexity: "intermediate",
                 round: "Executive",
-                notes: "Realistic timelines with phases and milestones"
+                notes: "Realistic timelines with phases and milestones",
+                leadershipPrinciples: []
             },
             {
                 category: "executive-communication",
                 question: "What benefit does your project bring to the company?",
                 complexity: "intermediate",
                 round: "Executive",
-                notes: "Business value: cost, speed to market, revenue impact, risk reduction"
-            },
-            {
-                category: "executive-communication",
-                question: "Tell me about a time you had to present to executives",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Focus on business impact and strategic communication"
+                notes: "Business value: cost, speed to market, revenue impact, risk reduction",
+                leadershipPrinciples: []
             },
             {
                 category: "executive-communication",
                 question: "How would you convince a CTO to adopt [technology]?",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "Business case, risk mitigation, competitive advantage"
+                notes: "Business case, risk mitigation, competitive advantage",
+                leadershipPrinciples: ["think-big"]
             },
             {
                 category: "executive-communication",
                 question: "You're presenting to a CIO about migration - how do you approach it?",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "Focus on business transformation and strategic value"
+                notes: "Focus on business transformation and strategic value",
+                leadershipPrinciples: ["think-big"]
             },
             {
                 category: "executive-communication",
                 question: "Now present the same migration to a CTO - what changes?",
                 complexity: "intermediate",
                 round: "Behavioral",
-                notes: "Technical depth, architecture decisions, implementation details"
+                notes: "Technical depth, architecture decisions, implementation details",
+                leadershipPrinciples: ["dive-deep"]
             },
 
             // Event-Driven Architecture Questions
@@ -1238,91 +1641,104 @@
                 question: "What is event-driven architecture?",
                 complexity: "basic",
                 round: "Technical",
-                notes: "Producer/consumer decoupling, independent scaling, built-in retries"
+                notes: "Producer/consumer decoupling, independent scaling, built-in retries",
+                leadershipPrinciples: []
             },
             {
                 category: "event-driven",
                 question: "What is the difference between synchronous and event-driven architecture?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Coupling, scaling, resilience, cost implications"
+                notes: "Coupling, scaling, resilience, cost implications",
+                leadershipPrinciples: []
             },
             {
                 category: "event-driven",
                 question: "What are the superpowers of EventBridge?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Rule-based filtering, content routing, archive/replay, no code routing"
+                notes: "Rule-based filtering, content routing, archive/replay, no code routing",
+                leadershipPrinciples: []
             },
             {
                 category: "event-driven",
                 question: "Why do we use SNS to SQS pattern instead of SNS directly to Lambda?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "SNS scales massively, SQS buffers, Lambda processes at comfortable rate"
+                notes: "SNS scales massively, SQS buffers, Lambda processes at comfortable rate",
+                leadershipPrinciples: []
             },
             {
                 category: "event-driven",
                 question: "Can EventBridge be completely replaced with API Gateway?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Different use cases - EventBridge for events, API Gateway for APIs"
+                notes: "Different use cases - EventBridge for events, API Gateway for APIs",
+                leadershipPrinciples: []
             },
             {
                 category: "event-driven",
                 question: "When should you choose EventBridge vs SNS vs SQS?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "EventBridge for rules/routing, SNS for pub/sub, SQS for queuing"
+                notes: "EventBridge for rules/routing, SNS for pub/sub, SQS for queuing",
+                leadershipPrinciples: []
             },
             {
                 category: "event-driven",
                 question: "What is the difference between SNS and EventBridge?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "SNS is pub/sub, EventBridge adds rules, filtering, and routing"
+                notes: "SNS is pub/sub, EventBridge adds rules, filtering, and routing",
+                leadershipPrinciples: []
             },
             {
                 category: "event-driven",
                 question: "What are the drawbacks of event-driven architecture?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Complexity, debugging difficulty, eventual consistency"
+                notes: "Complexity, debugging difficulty, eventual consistency",
+                leadershipPrinciples: []
             },
             {
                 category: "event-driven",
                 question: "How do you make event-driven architecture highly available?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Multi-AZ deployment, DLQ, retry policies, circuit breakers"
+                notes: "Multi-AZ deployment, DLQ, retry policies, circuit breakers",
+                leadershipPrinciples: []
             },
             {
                 category: "event-driven",
                 question: "How do you secure event-driven architecture?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "IAM roles, resource policies, encryption in transit/rest"
+                notes: "IAM roles, resource policies, encryption in transit/rest",
+                leadershipPrinciples: []
             },
             {
                 category: "event-driven",
                 question: "How do you monitor event-driven architecture?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "CloudWatch metrics, X-Ray tracing, EventBridge insights"
+                notes: "CloudWatch metrics, X-Ray tracing, EventBridge insights",
+                leadershipPrinciples: []
             },
             {
                 category: "event-driven",
                 question: "How do you test event-driven applications without asking other teams to resend messages?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "EventBridge archive and replay feature"
+                notes: "EventBridge archive and replay feature",
+                leadershipPrinciples: []
             },
             {
                 category: "event-driven",
                 question: "When would you NOT use event-driven architecture?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Real-time requirements, simple request/response, immediate consistency needs"
+                notes: "Real-time requirements, simple request/response, immediate consistency needs",
+                leadershipPrinciples: []
             },
 
             // GenAI and RAG Questions
@@ -1331,112 +1747,128 @@
                 question: "What is RAG (Retrieval Augmented Generation) and why was it created?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Combines retrieval with generation to provide current, accurate information"
+                notes: "Combines retrieval with generation to provide current, accurate information",
+                leadershipPrinciples: []
             },
             {
                 category: "genai",
                 question: "Explain the difference between RAG and fine-tuning a model",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "RAG retrieves external data, fine-tuning modifies model weights"
+                notes: "RAG retrieves external data, fine-tuning modifies model weights",
+                leadershipPrinciples: []
             },
             {
                 category: "genai",
                 question: "When would you choose RAG over fine-tuning?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Frequently changing data, cost considerations, domain-specific knowledge"
+                notes: "Frequently changing data, cost considerations, domain-specific knowledge",
+                leadershipPrinciples: []
             },
             {
                 category: "genai",
                 question: "How does the chunking process work in RAG?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Break documents into smaller pieces for better retrieval and context"
+                notes: "Break documents into smaller pieces for better retrieval and context",
+                leadershipPrinciples: []
             },
             {
                 category: "genai",
                 question: "What are embeddings and how do they work in vector databases?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Vector representations of text for semantic similarity search"
+                notes: "Vector representations of text for semantic similarity search",
+                leadershipPrinciples: []
             },
             {
                 category: "genai",
                 question: "Explain cosine similarity and how it's used for document retrieval",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Mathematical measure of similarity between vectors"
+                notes: "Mathematical measure of similarity between vectors",
+                leadershipPrinciples: []
             },
             {
                 category: "genai",
                 question: "How does Bedrock Knowledge Base implement RAG automatically?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Managed chunking, embedding, vector storage, and retrieval"
+                notes: "Managed chunking, embedding, vector storage, and retrieval",
+                leadershipPrinciples: []
             },
             {
                 category: "genai",
                 question: "What are Bedrock Agents and what problems do they solve?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Orchestrate complex tasks, chain-of-thought reasoning, API integration"
+                notes: "Orchestrate complex tasks, chain-of-thought reasoning, API integration",
+                leadershipPrinciples: []
             },
             {
                 category: "genai",
                 question: "How do agents perform chain-of-thought reasoning?",
                 complexity: "advanced",
                 round: "Technical",
-                notes: "React framework - Reason and Act in iterative steps"
+                notes: "React framework - Reason and Act in iterative steps",
+                leadershipPrinciples: []
             },
             {
                 category: "genai",
                 question: "What is the difference between Action Groups and Knowledge Base in agents?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Action Groups call APIs, Knowledge Base retrieves documents"
+                notes: "Action Groups call APIs, Knowledge Base retrieves documents",
+                leadershipPrinciples: []
             },
             {
                 category: "genai",
                 question: "How do you implement document-level security in Knowledge Base?",
                 complexity: "advanced",
                 round: "Technical",
-                notes: "Attribute-based access control, user context filtering"
+                notes: "Attribute-based access control, user context filtering",
+                leadershipPrinciples: []
             },
             {
                 category: "genai",
                 question: "What is temperature and how does it affect LLM output?",
                 complexity: "basic",
                 round: "Technical",
-                notes: "Controls randomness: 0 = deterministic, higher = more creative"
+                notes: "Controls randomness: 0 = deterministic, higher = more creative",
+                leadershipPrinciples: []
             },
             {
                 category: "genai",
                 question: "How do you choose between different models in Bedrock (Claude Haiku vs Sonnet)?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Consider speed, accuracy, cost, and use case requirements"
+                notes: "Consider speed, accuracy, cost, and use case requirements",
+                leadershipPrinciples: []
             },
             {
                 category: "genai",
                 question: "When would you use multiple agents vs a single agent?",
                 complexity: "advanced",
                 round: "Technical",
-                notes: "Specialized tasks, parallel processing, domain expertise"
+                notes: "Specialized tasks, parallel processing, domain expertise",
+                leadershipPrinciples: []
             },
             {
                 category: "genai",
                 question: "How is Bedrock pricing calculated (input/output tokens)?",
                 complexity: "basic",
                 round: "Technical",
-                notes: "Separate pricing for input tokens and output tokens"
+                notes: "Separate pricing for input tokens and output tokens",
+                leadershipPrinciples: []
             },
             {
                 category: "genai",
                 question: "When would you choose agents over simple Knowledge Base RAG?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Complex workflows, API calls, multi-step reasoning required"
+                notes: "Complex workflows, API calls, multi-step reasoning required",
+                leadershipPrinciples: []
             },
 
             // Performance and Caching Questions
@@ -1445,35 +1877,40 @@
                 question: "How do you optimize performance?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Caching, CDN, database optimization, right-sizing"
+                notes: "Caching, CDN, database optimization, right-sizing",
+                leadershipPrinciples: []
             },
             {
                 category: "performance",
                 question: "How do you scale to hyper scale?",
                 complexity: "advanced",
                 round: "Technical",
-                notes: "Auto scaling, load balancing, distributed architecture"
+                notes: "Auto scaling, load balancing, distributed architecture",
+                leadershipPrinciples: []
             },
             {
                 category: "performance",
                 question: "How do you reduce latency?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Caching, CDN, regional deployment, connection pooling"
+                notes: "Caching, CDN, regional deployment, connection pooling",
+                leadershipPrinciples: []
             },
             {
                 category: "performance",
                 question: "What are the two major caching services in AWS?",
                 complexity: "basic",
                 round: "Technical",
-                notes: "ElastiCache for Memcached and ElastiCache for Redis"
+                notes: "ElastiCache for Memcached and ElastiCache for Redis",
+                leadershipPrinciples: []
             },
             {
                 category: "performance",
                 question: "What are the two different caching mechanisms?",
                 complexity: "basic",
                 round: "Technical",
-                notes: "Pull-through (lazy loading) and write-through caching"
+                notes: "Pull-through (lazy loading) and write-through caching",
+                leadershipPrinciples: []
             },
 
             // Database Deep-Dive Questions
@@ -1482,35 +1919,40 @@
                 question: "How do you do high availability or disaster recovery for RDS vs Aurora?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Multi-AZ, read replicas, Aurora global clusters"
+                notes: "Multi-AZ, read replicas, Aurora global clusters",
+                leadershipPrinciples: []
             },
             {
                 category: "database",
                 question: "What are some pros and cons of DynamoDB, Aurora, RDS?",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Compare performance, cost, management overhead, use cases"
+                notes: "Compare performance, cost, management overhead, use cases",
+                leadershipPrinciples: []
             },
             {
                 category: "database",
                 question: "What is data analytics?",
                 complexity: "basic",
                 round: "Technical",
-                notes: "Process of examining data to draw insights and conclusions"
+                notes: "Process of examining data to draw insights and conclusions",
+                leadershipPrinciples: []
             },
             {
                 category: "database",
                 question: "What is the difference between OLAP and OLTP?",
                 complexity: "basic",
                 round: "Technical",
-                notes: "OLTP for transactions, OLAP for analytics and reporting"
+                notes: "OLTP for transactions, OLAP for analytics and reporting",
+                leadershipPrinciples: []
             },
             {
                 category: "database",
                 question: "When to use OLAP versus OLTP?",
                 complexity: "basic",
                 round: "Technical",
-                notes: "OLTP for operational systems, OLAP for data warehousing"
+                notes: "OLTP for operational systems, OLAP for data warehousing",
+                leadershipPrinciples: []
             },
 
             // Customer Discovery Questions
@@ -1519,56 +1961,64 @@
                 question: "Tell me about what you're doing with AWS",
                 complexity: "basic",
                 round: "Discovery",
-                notes: "Open-ended conversation starter for customer meetings"
+                notes: "Open-ended conversation starter for customer meetings",
+                leadershipPrinciples: []
             },
             {
                 category: "customer-discovery",
                 question: "What types of workloads run on AWS for you today?",
                 complexity: "basic",
                 round: "Discovery",
-                notes: "Understand current AWS usage and maturity"
+                notes: "Understand current AWS usage and maturity",
+                leadershipPrinciples: []
             },
             {
                 category: "customer-discovery",
                 question: "Who is using AWS at your organization?",
                 complexity: "basic",
                 round: "Discovery",
-                notes: "Identify stakeholders and decision makers"
+                notes: "Identify stakeholders and decision makers",
+                leadershipPrinciples: []
             },
             {
                 category: "customer-discovery",
                 question: "What is going well? What are challenges I can help solve?",
                 complexity: "basic",
                 round: "Discovery",
-                notes: "Understand pain points and opportunities"
+                notes: "Understand pain points and opportunities",
+                leadershipPrinciples: []
             },
             {
                 category: "customer-discovery",
                 question: "Where is your focus in the next 18-24 months?",
                 complexity: "basic",
                 round: "Discovery",
-                notes: "Align solutions with business roadmap"
+                notes: "Align solutions with business roadmap",
+                leadershipPrinciples: []
             },
             {
                 category: "customer-discovery",
                 question: "How are you securing your workloads today?",
                 complexity: "intermediate",
                 round: "Discovery",
-                notes: "Understand security posture and requirements"
+                notes: "Understand security posture and requirements",
+                leadershipPrinciples: []
             },
             {
                 category: "customer-discovery",
                 question: "What are your biggest priorities - cost, security, or speed to market?",
                 complexity: "basic",
                 round: "Discovery",
-                notes: "Understand primary drivers for technology decisions"
+                notes: "Understand primary drivers for technology decisions",
+                leadershipPrinciples: []
             },
             {
                 category: "customer-discovery",
                 question: "What's your team's expertise level with [technology]?",
                 complexity: "basic",
                 round: "Discovery",
-                notes: "Assess technical capabilities and training needs"
+                notes: "Assess technical capabilities and training needs",
+                leadershipPrinciples: []
             },
 
             // Architecture Game/Quiz Questions
@@ -1577,42 +2027,48 @@
                 question: "Detect error in this architecture diagram",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Common errors: missing NAT gateway, wrong subnet types, security groups"
+                notes: "Common errors: missing NAT gateway, wrong subnet types, security groups",
+                leadershipPrinciples: []
             },
             {
                 category: "architecture-quiz",
                 question: "How can EC2 reach internet?",
                 complexity: "basic",
                 round: "Technical",
-                notes: "NAT Gateway flow, internet gateway, routing tables"
+                notes: "NAT Gateway flow, internet gateway, routing tables",
+                leadershipPrinciples: []
             },
             {
                 category: "architecture-quiz",
                 question: "Improve the architecture, improve performance",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "Add caching, read replicas, RDS proxy, CDN"
+                notes: "Add caching, read replicas, RDS proxy, CDN",
+                leadershipPrinciples: []
             },
             {
                 category: "architecture-quiz",
                 question: "Improve security in this architecture",
                 complexity: "intermediate",
                 round: "Technical",
-                notes: "WAF, SSL, encryption, security groups, NACLs"
+                notes: "WAF, SSL, encryption, security groups, NACLs",
+                leadershipPrinciples: []
             },
             {
                 category: "architecture-quiz",
                 question: "What are the differences between SNS and SQS?",
                 complexity: "basic",
                 round: "Technical",
-                notes: "SNS is pub/sub, SQS is queuing; different use cases"
+                notes: "SNS is pub/sub, SQS is queuing; different use cases",
+                leadershipPrinciples: []
             },
             {
                 category: "architecture-quiz",
                 question: "Match services to use cases",
                 complexity: "basic",
                 round: "Technical",
-                notes: "Relational database, serverless, containers, etc."
+                notes: "Relational database, serverless, containers, etc.",
+                leadershipPrinciples: []
             },
 
             // Questions to Ask Interviewers
@@ -1621,345 +2077,24 @@
                 question: "What are the biggest things you're working on in the next year?",
                 complexity: "basic",
                 round: "All Rounds",
-                notes: "Strategic question for hiring managers"
+                notes: "Strategic question for hiring managers",
+                leadershipPrinciples: []
             },
             {
                 category: "questions-to-ask",
                 question: "What is one of the biggest challenges you're facing?",
                 complexity: "basic",
                 round: "All Rounds",
-                notes: "Shows interest in helping solve problems"
+                notes: "Shows interest in helping solve problems",
+                leadershipPrinciples: []
             },
             {
                 category: "questions-to-ask",
                 question: "What should be working better than it is today?",
                 complexity: "basic",
                 round: "All Rounds",
-                notes: "Identifies improvement opportunities"
-            },
-
-            // The Drunk TAM - Amazon TAM Specific Questions
-            {
-                category: "tam-specific",
-                question: "You made a bad decision, what did you learn?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "STAR format: How you found it was bad, communicated to stakeholders, documented, delivered training. Focus on 'Learn and be curious' LP"
-            },
-            {
-                category: "tam-specific",
-                question: "How did you find that this was a bad decision?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Follow-up: Specific metrics, feedback, or outcomes that indicated the decision wasn't optimal"
-            },
-            {
-                category: "tam-specific",
-                question: "How did you communicate that to stakeholders and document it?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Focus on transparency, documentation process, and training delivery to prevent future issues"
-            },
-            {
-                category: "tam-specific",
-                question: "How were your documents shared by the teams and what did it include?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Documentation sharing process, content details, team collaboration approach"
-            },
-            {
-                category: "tam-specific",
-                question: "In client documentation - did it contain SOP (Standard Operating Procedures)?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Process documentation, standardization, knowledge transfer to client teams"
-            },
-            {
-                category: "tam-specific",
-                question: "Which Leadership Principle did you discover? Focus on 'Learn and be curious'",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Tie learning experience to specific Amazon Leadership Principle"
-            },
-            {
-                category: "tam-specific",
-                question: "Worked against client timeline - how did you prioritize and identify high-impact items?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Show risk identification skills and data-driven prioritization. Focus on client value delivery"
-            },
-            {
-                category: "tam-specific",
-                question: "How did you identify the risk and what datapoints did you use?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Specific metrics, early warning indicators, and systematic risk assessment approach"
-            },
-            {
-                category: "tam-specific",
-                question: "When you strongly disagreed with your manager - what was it, how did you handle it?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Show data-driven disagreement, professional approach, and focus on company benefits and recognition"
-            },
-            {
-                category: "tam-specific",
-                question: "How did you show data to them and did they approve?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Data presentation skills, convincing with evidence, outcome of disagreement"
-            },
-            {
-                category: "tam-specific",
-                question: "Why did you do this to your manager?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Motivation behind the disagreement, principle-driven decision making"
-            },
-            {
-                category: "tam-specific",
-                question: "What were any company benefits and recognition?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Business impact of your position, organizational recognition or outcomes"
-            },
-            {
-                category: "tam-specific",
-                question: "Describe a time when you had a difficult time with a customer and how you handled it",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "TAM core competency: Customer relationship management, issue resolution, and learning outcomes"
-            },
-            {
-                category: "tam-specific",
-                question: "How did you find the cause of the customer issue?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Root cause analysis methodology, investigation approach"
-            },
-            {
-                category: "tam-specific",
-                question: "How did the customer issue happen?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Understanding of failure modes, contributing factors"
-            },
-            {
-                category: "tam-specific",
-                question: "How did you resolve the customer issue?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Solution implementation, customer communication, follow-up"
-            },
-            {
-                category: "tam-specific",
-                question: "How did you identify the issue initially?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Issue detection methods, monitoring, customer feedback"
-            },
-            {
-                category: "tam-specific",
-                question: "What did you learn from the customer issue?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Learning outcomes, process improvements, prevention strategies"
-            },
-            {
-                category: "tam-specific",
-                question: "What you could have done to meet the deadline?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Retrospective analysis, process improvements, resource planning"
-            },
-            {
-                category: "tam-specific",
-                question: "What was the parameter they were looking for?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Understanding stakeholder expectations, success criteria"
-            },
-            {
-                category: "tam-specific",
-                question: "Tough feedback from anyone - how did you make it positive?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Growth mindset, continuous improvement, turning feedback into actionable improvements"
-            },
-            {
-                category: "tam-specific",
-                question: "When you not only met goal but exceeded expectations",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Must include: deadline, execution approach, communication strategy. Show 'Deliver Results' LP"
-            },
-            {
-                category: "tam-specific",
-                question: "What was the deadline for exceeding expectations?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Timeline management, pressure handling, delivery focus"
-            },
-            {
-                category: "tam-specific",
-                question: "How did you execute to exceed expectations?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Execution strategy, resource management, innovation approach"
-            },
-            {
-                category: "tam-specific",
-                question: "How did you communicate the exceeded results?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Stakeholder communication, impact presentation, value articulation"
-            },
-            {
-                category: "tam-specific",
-                question: "Realized you needed deeper level of expertise - what did you do to learn?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Example: DynamoDB deep dive, exploring alternatives, systematic learning approach"
-            },
-            {
-                category: "tam-specific",
-                question: "Why DynamoDB for deeper expertise?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Technology selection rationale, business justification"
-            },
-            {
-                category: "tam-specific",
-                question: "Did you explore other options before DynamoDB?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Alternative evaluation, decision-making process"
-            },
-            {
-                category: "tam-specific",
-                question: "What steps do you take to learn something new?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Learning methodology, continuous improvement approach"
-            },
-            {
-                category: "tam-specific",
-                question: "How do you balance between HA (High Availability), Cost, and Reliability?",
-                complexity: "intermediate",
-                round: "Technical",
-                notes: "Core TAM skill: Architecture trade-offs, customer advisory on business/technical balance"
-            },
-            {
-                category: "tam-specific",
-                question: "Auth & authorization implementation approach",
-                complexity: "intermediate",
-                round: "Technical",
-                notes: "Security implementation, access control design, best practices"
-            },
-            {
-                category: "tam-specific",
-                question: "Autonomous contribution to business - develop AWS service",
-                complexity: "advanced",
-                round: "Behavioral",
-                notes: "Show initiative in building internal tools, eliminating repetitive tasks, ROI focus, customer satisfaction increase"
-            },
-            {
-                category: "tam-specific",
-                question: "How do you get rid of repeatable tasks and show ROI?",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Automation mindset, efficiency improvements, measurable business impact"
-            },
-            {
-                category: "tam-specific",
-                question: "Return on investment calculation and customer satisfaction increase",
-                complexity: "intermediate",
-                round: "Behavioral",
-                notes: "Business metrics, value demonstration, customer impact measurement"
-            },
-            {
-                category: "tam-specific",
-                question: "On-prem to AWS migration approach - educate and implement best practices",
-                complexity: "intermediate",
-                round: "Technical",
-                notes: "TAM core: Share AWS services, educate customers, ensure apps run well on cloud, demo and implement"
-            },
-            {
-                category: "tam-specific",
-                question: "Share AWS services to implement for migration",
-                complexity: "intermediate",
-                round: "Technical",
-                notes: "Service selection, migration planning, implementation strategy"
-            },
-            {
-                category: "tam-specific",
-                question: "Educate about the AWS services during migration",
-                complexity: "intermediate",
-                round: "Technical",
-                notes: "Knowledge transfer, training approach, customer enablement"
-            },
-            {
-                category: "tam-specific",
-                question: "Help ensure app runs well on cloud",
-                complexity: "intermediate",
-                round: "Technical",
-                notes: "Performance optimization, monitoring, troubleshooting"
-            },
-            {
-                category: "tam-specific",
-                question: "Demo AWS services to customers",
-                complexity: "intermediate",
-                round: "Technical",
-                notes: "Presentation skills, technical demonstration, customer engagement"
-            },
-            {
-                category: "tam-specific",
-                question: "Implement following AWS best practices",
-                complexity: "intermediate",
-                round: "Technical",
-                notes: "Best practice adherence, implementation guidance, quality assurance"
-            },
-            {
-                category: "tam-specific",
-                question: "Balance between utilization 10% vs 90% - resource optimization",
-                complexity: "intermediate",
-                round: "Technical",
-                notes: "Cost optimization guidance, right-sizing recommendations, performance vs cost trade-offs"
-            },
-            {
-                category: "tam-specific",
-                question: "Which WAR (Well-Architected Review) pillars and how you've applied them?",
-                complexity: "intermediate",
-                round: "Technical",
-                notes: "Must know all 6 pillars and have specific examples of implementing recommendations"
-            },
-            {
-                category: "tam-specific",
-                question: "Always say 'I did' not 'we did' - show individual contribution",
-                complexity: "basic",
-                round: "All Rounds",
-                notes: "Critical for TAM role: Personal accountability, individual impact, ownership of outcomes"
-            },
-            {
-                category: "tam-specific",
-                question: "Focus on DATA - numbers, challenges, how to overcome",
-                complexity: "intermediate",
-                round: "All Rounds",
-                notes: "Quantify everything: performance improvements, cost savings, time reductions, customer satisfaction metrics"
-            },
-            {
-                category: "tam-specific",
-                question: "Ask clarifying questions during technical discussions",
-                complexity: "basic",
-                round: "Technical",
-                notes: "Show curiosity, ensure proper understanding, demonstrate customer advisory approach"
-            },
-            {
-                category: "tam-specific",
-                question: "LP (Leadership Principles) demonstration with breadth of knowledge",
-                complexity: "intermediate",
-                round: "All Rounds",
-                notes: "Connect experiences to Amazon Leadership Principles, show broad technical and business understanding"
+                notes: "Identifies improvement opportunities",
+                leadershipPrinciples: []
             }
         ];
 
@@ -1972,9 +2107,22 @@
             filteredQuestions.forEach((q, index) => {
                 const row = document.createElement('tr');
                 row.className = 'question-row';
+                
+                // Create leadership principles display
+                let lpDisplay = '';
+                if (q.leadershipPrinciples && q.leadershipPrinciples.length > 0) {
+                    lpDisplay = q.leadershipPrinciples.map(lp => 
+                        `<span class="leadership-principle lp-${lp}">${lp.replace('-', ' ').toUpperCase()}</span>`
+                    ).join(' ');
+                }
+                
+                // Add negative indicator if applicable
+                const negativeIndicator = q.isNegative ? '<span class="negative-indicator">⚠️</span>' : '';
+                
                 row.innerHTML = `
                     <td><span class="category ${q.category}">${q.category.replace('-', ' ')}</span></td>
-                    <td class="question-text">${q.question}</td>
+                    <td class="question-text">${negativeIndicator}${q.question}</td>
+                    <td>${lpDisplay}</td>
                     <td><span class="complexity ${q.complexity}">${q.complexity}</span></td>
                     <td>${q.round}</td>
                     <td class="notes">${q.notes}</td>
@@ -1988,7 +2136,11 @@
         function updateStats() {
             const count = filteredQuestions.length;
             const total = questions.length;
-            document.getElementById('questionCount').textContent = `Showing ${count} of ${total} questions`;
+            const behavioralCount = filteredQuestions.filter(q => q.category === 'behavioral').length;
+            const negativeCount = filteredQuestions.filter(q => q.isNegative).length;
+            
+            document.getElementById('questionCount').textContent = 
+                `Showing ${count} of ${total} questions (${behavioralCount} behavioral, ${negativeCount} negative behavioral)`;
         }
 
         function filterQuestions() {
@@ -1999,7 +2151,10 @@
                 const matchesSearch = !searchTerm || 
                     q.question.toLowerCase().includes(searchTerm) ||
                     q.category.toLowerCase().includes(searchTerm) ||
-                    q.notes.toLowerCase().includes(searchTerm);
+                    q.notes.toLowerCase().includes(searchTerm) ||
+                    (q.leadershipPrinciples && q.leadershipPrinciples.some(lp => 
+                        lp.toLowerCase().includes(searchTerm))) ||
+                    q.round.toLowerCase().includes(searchTerm);
                     
                 const matchesCategory = activeFilter === 'all' || q.category === activeFilter;
                 
@@ -2010,15 +2165,17 @@
         }
 
         function exportToCSV() {
-            const headers = ['Category', 'Question', 'Complexity', 'Interview Round', 'Notes/Context'];
+            const headers = ['Category', 'Question', 'Leadership Principles', 'Complexity', 'Interview Round', 'Notes/Context', 'Is Negative'];
             const csvContent = [
                 headers.join(','),
                 ...filteredQuestions.map(q => [
                     q.category,
                     `"${q.question.replace(/"/g, '""')}"`,
+                    `"${q.leadershipPrinciples ? q.leadershipPrinciples.join(', ') : ''}"`,
                     q.complexity,
                     q.round,
-                    `"${q.notes.replace(/"/g, '""')}"`
+                    `"${q.notes.replace(/"/g, '""')}"`,
+                    q.isNegative ? 'Yes' : 'No'
                 ].join(','))
             ].join('\n');
             
@@ -2026,7 +2183,7 @@
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'aws_interview_questions.csv';
+            a.download = 'aws_interview_questions_with_leadership_principles.csv';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -2049,4 +2206,3 @@
     </script>
 </body>
 </html>
-                
