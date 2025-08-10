@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Interview Questions Comprehensive Sheet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8fafc;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ff9500, #ff6b35);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .controls {
+            padding: 20px;
+            background: #f1f5f9;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 12px 40px 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #ff9500;
+            box-shadow: 0 0 0 3px rgba(255, 149, 0, 0.1);
+        }
+        
+        .category-filter {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+        
+        .filter-btn:hover {
+            border-color: #ff9500;
+            background: #fff7ed;
+        }
+        
+        .filter-btn.active {
+            background: #ff9500;
+            color: white;
+            border-color: #ff9500;
+        }
+        
+        .stats {
+            background: white;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 14px;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            max-height: 70vh;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        
+        thead {
+            position: sticky;
+            top: 0;
+            background: #f8fafc;
+            z-index: 10;
+        }
+        
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #374151;
+            border-bottom: 2px solid #e5e7eb;
+            background: #f8fafc;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f1f5f9;
+            vertical-align: top;
+        }
+        
+        tbody tr {
+            transition: all 0.2s ease;
+        }
+        
+        tbody tr:hover {
+            background-color: #f8fafc;
+            transform: translateX(2px);
+        }
+        
+        .category {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .category.migration { background: #dcfce7; color: #166534; }
+        .category.behavioral { background: #dbeafe; color: #1e40af; }
+        .category.technical { background: #fef3c7; color: #92400e; }
+        .category.system-design { background: #f3e8ff; color: #7c2d12; }
+        .category.security { background: #fee2e2; color: #991b1b; }
+        .category.architecture { background: #ecfdf5; color: #065f46; }
+        .category.well-architected { background: #ede9fe; color: #6b21a8; }
+        .category.compliance { background: #fdf2f8; color: #9d174d; }
+        .category.kubernetes { background: #cffafe; color: #065f46; }
+        
+        .question-text {
+            line-height: 1.6;
+            color: #374151;
+        }
+        
+        .complexity {
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        
+        .complexity.basic { background: #d1fae5; color: #065f46; }
+        .complexity.intermediate { background: #fef3c7; color: #92400e; }
+        .complexity.advanced { background: #fee2e2; color: #991b1b; }
+        
+        .notes {
+            color: #6b7280;
+            font-style: italic;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        
+        .question-row.hidden {
+            display: none;
+        }
+        
+        .export-btn {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .export-btn:hover {
+            background: #059669;
+            transform: translateY(-1px);
+        }
+        
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .category-filter {
+                justify-content: center;
+            }
+            
+            .search-box {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AWS Interview Questions Master Sheet</h1>
+            <p>Comprehensive collection of technical, behavioral, and system design questions</p>
+        </div>
+        
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search questions, categories, or keywords...">
+            </div>
+            
+            <div class="category-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="migration">Migration</button>
+                <button class="filter-btn" data-filter="behavioral">Behavioral</button>
+                <button class="filter-btn" data-filter="technical">Technical</button>
+                <button class="filter-btn" data-filter="system-design">System Design</button>
+                <button class="filter-btn" data-filter="security">Security</button>
+                <button class="filter-btn" data-filter="architecture">Architecture</button>
+                <button class="filter-btn" data-filter="well-architected">Well-Architected</button>
+                <button class="filter-btn" data-filter="compliance">Compliance</button>
+                <button class="filter-btn" data-filter="kubernetes">Kubernetes</button>
+            </div>
+            
+            <button class="export-btn" onclick="exportToCSV()">Export CSV</button>
+        </div>
+        
+        <div class="stats">
+            <span id="questionCount">Loading questions...</span>
+        </div>
+        
+        <div class="table-container">
+            <table id="questionsTable">
+                <thead>
+                    <tr>
+                        <th style="width: 8%;">Category</th>
+                        <th style="width: 50%;">Question</th>
+                        <th style="width: 12%;">Complexity</th>
+                        <th style="width: 10%;">Interview Round</th>
+                        <th style="width: 20%;">Notes/Context</th>
+                    </tr>
+                </thead>
+                <tbody id="questionsBody">
+                    <!-- Questions will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            // Migration Questions
+            {
+                category: "migration",
+                question: "Tell me how you approached a migration",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Focus on 3-phase approach: Assess, Mobilize, Migrate & Modernize"
+            },
+            {
+                category: "migration",
+                question: "How did you choose migration strategy?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Discuss 7 R's of migration and decision framework"
+            },
+            {
+                category: "migration",
+                question: "How did you choose proof of concept?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Explain selection criteria and success metrics"
+            },
+            {
+                category: "migration",
+                question: "What are the differences between operating in on-prem and AWS?",
+                complexity: "basic",
+                round: "Technical",
+                notes: "Compare operational models, scaling, security"
+            },
+            {
+                category: "migration",
+                question: "What challenges did you face during migration?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Use STAR format, focus on your specific role"
+            },
+            {
+                category: "migration",
+                question: "What are the new things that you had to do?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Learning new technologies, adapting processes"
+            },
+            {
+                category: "migration",
+                question: "Can you share the result of the migration?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Must include quantifiable metrics and business impact"
+            },
+            {
+                category: "migration",
+                question: "How did you handle the part where there's no autoscaling in on-prem?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Discuss scaling challenges and cloud solutions"
+            },
+            {
+                category: "migration",
+                question: "What are the seven R's of migration?",
+                complexity: "basic",
+                round: "Technical",
+                notes: "Rehost, Replatform, Refactor, Repurchase, Retain, Retire, Relocate"
+            },
+            {
+                category: "migration",
+                question: "What is the most popular migration strategy?",
+                complexity: "basic",
+                round: "Technical",
+                notes: "Rehost (lift and shift) - explain why"
+            },
+            {
+                category: "migration",
+                question: "What migration strategy have you worked on?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Specific examples with reasoning and outcomes"
+            },
+            {
+                category: "migration",
+                question: "What would you recommend for migration strategy?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Depends on requirements, timeline, budget, complexity"
+            },
+            {
+                category: "migration",
+                question: "How many applications did you migrate and in what timeframe?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "Be specific and realistic about numbers"
+            },
+            {
+                category: "migration",
+                question: "What tools did you use for migration?",
+                complexity: "basic",
+                round: "Technical",
+                notes: "ADS, MGN, DMS, Migration Hub, etc."
+            },
+
+            // Behavioral Questions (STAR Format)
+            {
+                category: "behavioral",
+                question: "Tell me about yourself",
+                complexity: "basic",
+                round: "All Rounds",
+                notes: "3 minutes max: background, superpower, tie to position"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you went above and beyond",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Most common LP question - avoid troubleshooting answers"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time you dealt with a difficult co-worker",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Focus on your actions and positive resolution"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time you disagreed with your manager",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Show respectful disagreement and data-driven decisions"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you had a conflict with your team member",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Focus on conflict resolution and collaboration"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you solved an ambiguous situation",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Show structured problem-solving approach"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about the most complex project you have solved",
+                complexity: "advanced",
+                round: "Behavioral",
+                notes: "Core question - must show technical depth and business impact"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you found a simple solution to a complex problem",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Shows innovation and customer obsession"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you had to prioritize some customer needs over others",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Customer obsession and judgment principles"
+            },
+            {
+                category: "behavioral",
+                question: "Describe a time when you had a tight deadline to meet - how did you get things done?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Bias for action and deliver results"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you learned something new and used it in your projects",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Learn and be curious principle"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you had to deal with ambiguous requirements",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Think big and dive deep principles"
+            },
+            {
+                category: "behavioral",
+                question: "Describe a time when you had to influence someone without authority",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Earn trust and have backbone, disagree and commit"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you made a mistake",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Ownership and learn from failures"
+            },
+            {
+                category: "behavioral",
+                question: "Why do you want to join this company and not other companies?",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "Research company's AWS journey and tie to your experience"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you reinvented and simplified something",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Invent and simplify leadership principle"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you delivered a project from ambiguous requirements",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Customer obsession and think big"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about a time when you had to pivot after doing 75% of a project",
+                complexity: "advanced",
+                round: "Behavioral",
+                notes: "Shows adaptability and customer focus"
+            },
+            {
+                category: "behavioral",
+                question: "Tell me about two strengths and two weaknesses",
+                complexity: "basic",
+                round: "Behavioral",
+                notes: "What are you doing to resolve weaknesses?"
+            },
+
+            // Technical Questions
+            {
+                category: "technical",
+                question: "What is the difference between physical server, virtual machine, and container?",
+                complexity: "basic",
+                round: "Technical",
+                notes: "Fundamental concepts - resource sharing, isolation"
+            },
+            {
+                category: "technical",
+                question: "What are the bottlenecks in three-tier architecture?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Database, network, compute - explain each layer"
+            },
+            {
+                category: "technical",
+                question: "How do you scale an application?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Vertical vs horizontal scaling, auto scaling strategies"
+            },
+            {
+                category: "technical",
+                question: "Tell me about autoscaling groups and load balancers",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "How they work together, configuration options"
+            },
+            {
+                category: "technical",
+                question: "What do you think about autoscaling groups? Tell me about the time you last used autoscaling groups",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Combine technical knowledge with experience"
+            },
+
+            // System Design Questions
+            {
+                category: "system-design",
+                question: "Design Amazon.com (retail website)",
+                complexity: "advanced",
+                round: "System Design",
+                notes: "Focus on catalog, cart, order processing, recommendations"
+            },
+            {
+                category: "system-design",
+                question: "Design Prime Video",
+                complexity: "advanced",
+                round: "System Design",
+                notes: "Video streaming, CDN, metadata, user management"
+            },
+            {
+                category: "system-design",
+                question: "Design YouTube",
+                complexity: "advanced",
+                round: "System Design",
+                notes: "Video upload, processing, streaming, recommendations"
+            },
+            {
+                category: "system-design",
+                question: "Design a parking garage system",
+                complexity: "intermediate",
+                round: "System Design",
+                notes: "Real-time availability, payment processing, entry/exit"
+            },
+            {
+                category: "system-design",
+                question: "Design Uber",
+                complexity: "advanced",
+                round: "System Design",
+                notes: "Matching, location services, pricing, payments"
+            },
+            {
+                category: "system-design",
+                question: "Design a meeting action items system with GenAI",
+                complexity: "advanced",
+                round: "System Design",
+                notes: "Modern AI integration, meeting processing, task management"
+            },
+            {
+                category: "system-design",
+                question: "What other service can you pick instead of EC2? How does that change the design?",
+                complexity: "intermediate",
+                round: "System Design",
+                notes: "Lambda, ECS, EKS - trade-offs and implications"
+            },
+            {
+                category: "system-design",
+                question: "If I swap out EC2 with Lambda, what changes in the design factors?",
+                complexity: "intermediate",
+                round: "System Design",
+                notes: "Serverless implications: scaling, cost, cold starts"
+            },
+            {
+                category: "system-design",
+                question: "If I swap out Aurora with DynamoDB, what changes?",
+                complexity: "intermediate",
+                round: "System Design",
+                notes: "NoSQL vs relational trade-offs"
+            },
+            {
+                category: "system-design",
+                question: "Why did you choose DynamoDB over Aurora for this use case?",
+                complexity: "intermediate",
+                round: "System Design",
+                notes: "Decision criteria and justification"
+            },
+            {
+                category: "system-design",
+                question: "What happens if I want to use API Gateway instead of Application Load Balancer?",
+                complexity: "intermediate",
+                round: "System Design",
+                notes: "API management vs load balancing trade-offs"
+            },
+            {
+                category: "system-design",
+                question: "How do you validate if your design is good?",
+                complexity: "intermediate",
+                round: "System Design",
+                notes: "Testing, monitoring, performance metrics"
+            },
+            {
+                category: "system-design",
+                question: "How do you prioritize one design factor versus another?",
+                complexity: "intermediate",
+                round: "System Design",
+                notes: "Business requirements drive technical decisions"
+            },
+            {
+                category: "system-design",
+                question: "What if I want to put 20,000 transactions per second through this system?",
+                complexity: "advanced",
+                round: "System Design",
+                notes: "High-scale considerations and bottlenecks"
+            },
+            {
+                category: "system-design",
+                question: "How would you handle high burst traffic?",
+                complexity: "advanced",
+                round: "System Design",
+                notes: "Burst scaling, pre-warming, queuing"
+            },
+            {
+                category: "system-design",
+                question: "What's the difference between bar rate scaling and peak scaling?",
+                complexity: "intermediate",
+                round: "System Design",
+                notes: "Sustained vs burst traffic patterns"
+            },
+            {
+                category: "system-design",
+                question: "How do you make this system highly scalable?",
+                complexity: "intermediate",
+                round: "System Design",
+                notes: "Horizontal scaling, caching, database optimization"
+            },
+            {
+                category: "system-design",
+                question: "How do you make this system highly available?",
+                complexity: "intermediate",
+                round: "System Design",
+                notes: "Multi-AZ, redundancy, failover strategies"
+            },
+            {
+                category: "system-design",
+                question: "How do you secure this architecture?",
+                complexity: "intermediate",
+                round: "System Design",
+                notes: "Defense in depth, encryption, access controls"
+            },
+            {
+                category: "system-design",
+                question: "How do you make this cost-effective?",
+                complexity: "intermediate",
+                round: "System Design",
+                notes: "Right-sizing, reserved instances, spot instances"
+            },
+            {
+                category: "system-design",
+                question: "How do you monitor this system?",
+                complexity: "intermediate",
+                round: "System Design",
+                notes: "CloudWatch, X-Ray, logging strategies"
+            },
+            {
+                category: "system-design",
+                question: "How do you ensure fault tolerance?",
+                complexity: "intermediate",
+                round: "System Design",
+                notes: "Circuit breakers, retries, graceful degradation"
+            },
+
+            // Well-Architected Framework Questions
+            {
+                category: "well-architected",
+                question: "Have you used AWS Well-Architected Framework?",
+                complexity: "basic",
+                round: "Technical",
+                notes: "Yes/no with specific examples"
+            },
+            {
+                category: "well-architected",
+                question: "Give me an example where you used Well-Architected Framework",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Specific pillar, findings, remediation"
+            },
+            {
+                category: "well-architected",
+                question: "How have you implemented gaps found in Well-Architected reviews?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Prioritization and implementation strategy"
+            },
+            {
+                category: "well-architected",
+                question: "What are the six pillars of Well-Architected Framework?",
+                complexity: "basic",
+                round: "Technical",
+                notes: "Operational Excellence, Security, Reliability, Performance, Cost, Sustainability"
+            },
+
+            // Architecture Decision Questions
+            {
+                category: "architecture",
+                question: "Give me an example where you had multiple competing designs - how did you select one?",
+                complexity: "intermediate",
+                round: "Behavioral",
+                notes: "Decision criteria, trade-off analysis, stakeholder buy-in"
+            },
+            {
+                category: "architecture",
+                question: "How do you compare AWS native services vs third-party tools?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Integration, support, cost, lock-in considerations"
+            },
+            {
+                category: "architecture",
+                question: "Walk me through your decision process for choosing between Lambda vs EC2",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Use cases, trade-offs, cost implications"
+            },
+            {
+                category: "architecture",
+                question: "How do you evaluate Secrets Manager vs HashiCorp Vault?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Feature comparison, integration, operational overhead"
+            },
+
+            // Security Questions
+            {
+                category: "security",
+                question: "How do you protect network resources?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "VPC, security groups, NACLs, WAF"
+            },
+            {
+                category: "security",
+                question: "How do you protect data at rest?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Encryption, KMS, key rotation"
+            },
+            {
+                category: "security",
+                question: "How do you handle compliance requirements (PCI, HIPAA, FedRAMP)?",
+                complexity: "advanced",
+                round: "Technical",
+                notes: "Specific controls, auditing, documentation"
+            },
+            {
+                category: "security",
+                question: "What security controls would you implement for a financial services company?",
+                complexity: "advanced",
+                round: "Technical",
+                notes: "Industry-specific requirements and best practices"
+            },
+            {
+                category: "security",
+                question: "How do you scan for vulnerabilities in your infrastructure?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Inspector, Security Hub, GuardDuty"
+            },
+
+            // Kubernetes Questions
+            {
+                category: "kubernetes",
+                question: "How does Kubernetes application scaling work?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "HPA, VPA, cluster autoscaler"
+            },
+            {
+                category: "kubernetes",
+                question: "What's the difference between containerization and virtualization?",
+                complexity: "basic",
+                round: "Technical",
+                notes: "Resource usage, isolation, portability"
+            },
+            {
+                category: "kubernetes",
+                question: "How do you make Kubernetes applications highly available?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Multi-AZ deployments, pod disruption budgets"
+            },
+            {
+                category: "kubernetes",
+                question: "Do you know Helm?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Only ask if candidate claims deep K8s knowledge"
+            },
+
+            // Compliance Questions
+            {
+                category: "compliance",
+                question: "How do you design for PCI compliance?",
+                complexity: "advanced",
+                round: "Technical",
+                notes: "Network segmentation, encryption, access controls"
+            },
+            {
+                category: "compliance",
+                question: "What services are available in GovCloud?",
+                complexity: "intermediate",
+                round: "Technical",
+                notes: "Subset of services, compliance requirements"
+            },
+            {
+                category: "compliance",
+                question: "How do design factors change for regulated industries?",
+                complexity: "advanced",
+                round: "Technical",
+                notes: "Additional controls, documentation, auditing"
+            },
+            {
+                category: "compliance",
+                question: "What additional logging/auditing is required for HIPAA?",
+                complexity: "advanced",
+                round: "Technical",
+                notes: "CloudTrail, access logging, data handling"
+            }
+        ];
+
+        let filteredQuestions = [...questions];
+
+        function renderQuestions() {
+            const tbody = document.getElementById('questionsBody');
+            tbody.innerHTML = '';
+            
+            filteredQuestions.forEach((q, index) => {
+                const row = document.createElement('tr');
+                row.className = 'question-row';
+                row.innerHTML = `
+                    <td><span class="category ${q.category}">${q.category.replace('-', ' ')}</span></td>
+                    <td class="question-text">${q.question}</td>
+                    <td><span class="complexity ${q.complexity}">${q.complexity}</span></td>
+                    <td>${q.round}</td>
+                    <td class="notes">${q.notes}</td>
+                `;
+                tbody.appendChild(row);
+            });
+            
+            updateStats();
+        }
+
+        function updateStats() {
+            const count = filteredQuestions.length;
+            const total = questions.length;
+            document.getElementById('questionCount').textContent = `Showing ${count} of ${total} questions`;
+        }
+
+        function filterQuestions() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+            
+            filteredQuestions = questions.filter(q => {
+                const matchesSearch = !searchTerm || 
+                    q.question.toLowerCase().includes(searchTerm) ||
+                    q.category.toLowerCase().includes(searchTerm) ||
+                    q.notes.toLowerCase().includes(searchTerm);
+                    
+                const matchesCategory = activeFilter === 'all' || q.category === activeFilter;
+                
+                return matchesSearch && matchesCategory;
+            });
+            
+            renderQuestions();
+        }
+
+        function exportToCSV() {
+            const headers = ['Category', 'Question', 'Complexity', 'Interview Round', 'Notes/Context'];
+            const csvContent = [
+                headers.join(','),
+                ...filteredQuestions.map(q => [
+                    q.category,
+                    `"${q.question.replace(/"/g, '""')}"`,
+                    q.complexity,
+                    q.round,
+                    `"${q.notes.replace(/"/g, '""')}"`
+                ].join(','))
+            ].join('\n');
+            
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'aws_interview_questions.csv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', filterQuestions);
+        
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                filterQuestions();
+            });
+        });
+
+        // Initialize
+        renderQuestions();
+    </script>
+</body>
+</html>
